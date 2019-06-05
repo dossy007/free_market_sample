@@ -54,6 +54,8 @@ referenceとforeign_keyは組で使用。
 |first_name|string||
 |last_name(kana)|string||
 |first_name(kana)|string||
+|birth_year|integer||
+|birth_month|integer||
 |birth_day|integer||
 |credit_id|integer||
 |user_id|references|foreign_key: true|
