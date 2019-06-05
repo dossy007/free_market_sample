@@ -42,6 +42,7 @@ referenceとforeign_keyは組で使用。
 
 ## Assosiation
 
+has_one: profile
 
 
 
