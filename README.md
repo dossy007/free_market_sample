@@ -23,6 +23,13 @@ Things you may want to cover:
 
 * ...
 
+数字はinteger
+文字列型はstring
+長い文字列はtext
+indexをはる　＝　速度を早める
+外部キー制約は、主キーと結びつけるために必ずvalueをnull以外にしてねというもの。
+reference型は外部キーに制約を使う時に使用(制約つけるとindexがautoでつく)user_idをt.references :userで作れる。
+referenceとforeign_keyは組で使用。
 
 ## user_table
 |Column|Type|Option|
