@@ -22,6 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
 ## user_table
 |Column|Type|Option|
 |------|----|------|
@@ -29,4 +31,22 @@ Things you may want to cover:
 |user_evaluation||
 |points|string||
 |total_sell_money|string||
-||
+
+
+## Assosiation
+
+
+
+
+## profile
+|Column|Type|Option|
+|------|----|------|
+|email|text||
+|password|text||
+|last_name|string||
+|first_name|string||
+|last_name(kana)|string||
+|first_name(kana)|string||
+|birth_day|integer||
+|credit_id|integer||
+|user_id|references|foreign_key: true|
