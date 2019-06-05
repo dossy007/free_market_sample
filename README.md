@@ -42,7 +42,6 @@ prefectureなどは、modelで操作できるのでidさえあれば良いもの
 
 
 ## Assosiation
-
 has_one: profile
 
 
@@ -61,3 +60,20 @@ has_one: profile
 |birth_day|integer||
 |credit_id|integer||
 |user_id|references|foreign_key: true|
+
+## Association
+belongs_to: user
+has_one :adress
+
+## Adress
+|Column|Type|Option|
+|------|----|------|
+|postal_code|integer||
+|prefecture|integer||
+|city_name|string||
+|building_name|string||
+|profile_id|references|foreign_key: true|
+
+## Association
+
+belongs_to :profile
