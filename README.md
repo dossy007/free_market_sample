@@ -63,7 +63,8 @@ has_one: profile
 
 ## Association
 belongs_to: user
-has_one :adress
+has_one: adress
+has_one: send_adress
 
 ## Adress
 |Column|Type|Option|
@@ -76,4 +77,17 @@ has_one :adress
 
 ## Association
 
+belongs_to :profile
+
+
+## Send_adress
+|Column|Type|Option|
+|------|----|------|
+|postal_code|integer||
+|prefecture|integer||
+|city_name|string||
+|building_name|string||
+|profile_id|references|foreign_key: true|
+
+## Association
 belongs_to :profile
