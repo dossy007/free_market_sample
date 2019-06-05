@@ -29,3 +29,4 @@ Things you may want to cover:
 |user_evaluation||
 |points|string||
 |total_sell_money|string||
+||
