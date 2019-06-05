@@ -32,6 +32,9 @@ reference型は外部キーに制約を使う時に使用(制約つけるとinde
 referenceとforeign_keyは組で使用。
 
 prefectureなどは、modelで操作できるのでidさえあれば良いものかと。
+
+imageはcarrier_waveで管理すると思われ
+
 ## user_table
 |Column|Type|Option|
 |------|----|------|
