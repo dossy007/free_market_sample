@@ -22,6 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-<!-- ## user_table -->
+## user_table
 |Column|Type|Option|
 |------|----|------|
+|name|text||
+|user_evaluation||
+|points|string||
+|total_sell_money|string||
