@@ -31,6 +31,7 @@ indexをはる　＝　速度を早める
 reference型は外部キーに制約を使う時に使用(制約つけるとindexがautoでつく)user_idをt.references :userで作れる。
 referenceとforeign_keyは組で使用。
 
+prefectureなどは、modelで操作できるのでidさえあれば良いものかと。
 ## user_table
 |Column|Type|Option|
 |------|----|------|
