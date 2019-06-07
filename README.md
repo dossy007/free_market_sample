@@ -94,3 +94,18 @@ belongs_to :profile
 
 ## Association
 belongs_to :profile
+
+## Item
+|Column|Type|Option|
+|------|----|------|
+|name|string||
+|size|integer||
+|brand|string||
+|shopping_satus|integer||
+|send_burden||
+|shopping_method||
+|prefecture|integer||
+|delivery_date|integer||
+|price|integer||
+|comments_id|integer||
+
