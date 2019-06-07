@@ -46,7 +46,7 @@ imageはcarrier_waveで管理すると思われ
 
 ## Assosiation
 has_one: profile
-
+has_many :item_comments
 
 
 ## profile
