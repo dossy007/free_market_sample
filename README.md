@@ -111,6 +111,7 @@ belongs_to :profile
 
 ## Association
 has_many :item_comments
+has_one :category
 
 ## Item_comment
 |Column|Type|Option|
@@ -120,3 +121,14 @@ has_many :item_comments
 ## Association
 belongs_to :user
 belongs_to :item
+
+## Categoty_table
+
+|Column|Type|Option|
+|------|----|------|
+|name|string||
+
+## Association
+belongs_to :item
+
+
