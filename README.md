@@ -109,3 +109,14 @@ belongs_to :profile
 |price|integer||
 |comments_id|integer||
 
+## Association
+
+
+## Item_comment
+|Column|Type|Option|
+|------|----|------|
+|text|text||
+
+## Association
+belongs_to :user
+belongs_to :item
