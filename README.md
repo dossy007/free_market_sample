@@ -110,7 +110,7 @@ belongs_to :profile
 |comments_id|integer||
 
 ## Association
-
+has_many :item_comments
 
 ## Item_comment
 |Column|Type|Option|
