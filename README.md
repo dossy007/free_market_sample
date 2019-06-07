@@ -131,4 +131,11 @@ belongs_to :item
 ## Association
 belongs_to :item
 
+## Category_tree_table
+|Column|Type|Option|
+|------|----|------|
+|category_tree_id|integer|
+|ancestor_category_id|integer|
+|descendent_category_id|integer|
 
+## Association
