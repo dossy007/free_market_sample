@@ -122,7 +122,9 @@ belongs_to :buyer, :class_name=>'Item'
 |prefecture|integer||
 |delivery_date|integer||
 |price|integer||
-|comments_id|integer||
+|text|text||
+|comment_id|integer||
+|good_function|integer||
 
 ## Association
 has_many :item_comments
