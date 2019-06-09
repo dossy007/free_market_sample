@@ -39,7 +39,7 @@ imageはcarrier_waveで管理すると思われ
 |Column|Type|Option|
 |------|----|------|
 |name|text||
-|user_evaluation||
+|user_evaluation_id|integer|
 |points|string||
 |total_sell_money|string||
 
@@ -47,11 +47,22 @@ imageはcarrier_waveで管理すると思われ
 ## Assosiation
 has_one: profile
 has_many :item_comments
+has_one :user_evaluation
 <!-- 以下はitemとのアソシエーション -->
 has_many :deals_of _seller, :class_name=> 'Deal', :foreign_key=>'seller_id'
 has_many :deals_of_buyer, :class_name=> 'Deal', :foreign_key=>'buyer_id'
 has_many :items_of_seller, :through=> :deals_of_seller, :source=>'item'
 has_many :items_of_buyer, :through=> :deals_of_buyer, :source=> 'item'
+
+## User_evaluation
+|Column|Type|Option|
+|------|----|------|
+|good|integer||
+|normal|integer||
+|bad|integer||
+
+## Association
+belogs_to :user
 
 ## profile
 |Column|Type|Option|
