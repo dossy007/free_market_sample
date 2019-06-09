@@ -47,10 +47,11 @@ imageはcarrier_waveで管理すると思われ
 ## Assosiation
 has_one: profile
 has_many :item_comments
-<!-- 以下はuserとitemのアソ -->
+<!-- 以下はuserとitemのアソシエーション -->
 has_many :deals_of _seller, :class_name=> 'Deal', :foreign_key=>'seller_id'
 has_many :deal_of buyer, :class_name=> 'Deal', :foreign_key=>'buyer_id
-has_many :items_of_seller, :through=> :deals_of_seller, :foreign_key
+has_many :items_of_seller, :through=> :deals_of_seller, :source=>'item'
+has_many :items_of_buyer, :through=> :deals_of_buyer, :source=> 'item'
 
 ## profile
 |Column|Type|Option|
@@ -116,6 +117,7 @@ belongs_to :profile
 has_many :item_comments
 has_many :item_imgs
 has_one :category
+<!-- 以下はuserとのアソシエーション-->
 
 
 ## Item_comment
