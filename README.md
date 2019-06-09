@@ -35,7 +35,7 @@ prefectureなどは、modelで操作できるのでidさえあれば良いもの
 
 imageはcarrier_waveで管理すると思われ
 
-## user_table
+## User_table
 |Column|Type|Option|
 |------|----|------|
 |name|text||
