@@ -99,6 +99,17 @@ belongs_to :profile
 ## Association
 belongs_to :profile
 
+## Deal
+|Column|Type|Option|
+|------|----|------|
+|item_id|integer||
+|seller_id|integer|
+|buyer_id|integer||
+
+## Association
+belongs_to :seller, :class_name=>'User'
+belongs_to :buyer, :class_name=>'Item'
+
 ## Item
 |Column|Type|Option|
 |------|----|------|
@@ -118,7 +129,9 @@ has_many :item_comments
 has_many :item_imgs
 has_one :category
 <!-- 以下はuserとのアソシエーション-->
-
+has_many :deals
+has_many :sellers, :through=> :deals
+has_many :buyers, :through=> :deals
 
 ## Item_comment
 |Column|Type|Option|
