@@ -80,7 +80,7 @@ has_one: send_adress
 |prefecture|integer||
 |city_name|string||
 |building_name|string||
-|profile_id|references|foreign_key: true|
+|profile|references|foreign_key: true|
 
 ## Association
 
