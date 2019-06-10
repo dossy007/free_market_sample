@@ -102,9 +102,9 @@ belongs_to :profile
 ## Deal
 |Column|Type|Option|
 |------|----|------|
-|item_id|integer||
-|seller_id|integer|
-|buyer_id|integer||
+|item|references|foreign_key: true|
+|seller|references|foreign_key: true|
+|buyer|references|foreign_key: true|
 
 ## Association
 belongs_to :seller, :class_name=>'User'
