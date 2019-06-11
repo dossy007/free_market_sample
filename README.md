@@ -66,7 +66,7 @@ belogs_to :user
 |birth_month|integer||
 |birth_day|integer||
 |credit_id|integer||
-|user_id|references|foreign_key: true|
+|user|references|foreign_key: true|
 
 ## Association
 belongs_to: user
