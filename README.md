@@ -123,7 +123,7 @@ belongs_to :buyer, :class_name=>'Item'
 |delivery_date|integer||
 |price|integer||
 |text|text||
-|comment_id|integer||
+|comment|references|foreign_key :true|
 |good_function|integer||
 
 ## Association
