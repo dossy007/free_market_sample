@@ -162,6 +162,7 @@ belongs_to :item
 
 ## Association
 belongs_to :item
+has_one :category_tree_table
 
 ## Category_tree_table
 |Column|Type|Option|
@@ -171,3 +172,4 @@ belongs_to :item
 |descendent_category_id|integer|
 
 ## Association
+belongs_to :category_tree_table
