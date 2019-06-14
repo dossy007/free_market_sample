@@ -117,8 +117,8 @@ belongs_to :buyer, :class_name=>'Item'
 |size|integer||
 |brand|string||
 |shopping_status|integer||
-|send_burden||
-|shopping_method||
+|send_burden|integer|
+|shopping_method|integer|
 |prefecture|integer||
 |delivery_date|integer||
 |price|integer||
