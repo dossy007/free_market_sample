@@ -39,7 +39,7 @@ set :rbenv_ruby, "2.5.1"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 set :auth_methods: ['publickey'],
-    keys: [.ssh/dodo.pem]
+    keys: [".ssh/dodo.pem"]
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid"}
 set :unicorn_config_path, -> {"#{current_path}/config/unicorn.rb"}
 set :keep_releases, 5
