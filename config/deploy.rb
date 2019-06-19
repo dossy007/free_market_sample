@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "free_market_sample"
-set :repo_url, "git@example.com:dossy007/free_market_sample.git"
+set :repo_url, "git@github.com:dossy007/free_market_sample.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -38,7 +38,7 @@ set :rbenv_ruby, "2.5.1"
 # set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
-set :auth_methods: ["publickey"],
+set :auth_methods ["publickey"],
     keys: [".ssh/dodo.pem"]
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid"}
 set :unicorn_config_path, -> {"#{current_path}/config/unicorn.rb"}
