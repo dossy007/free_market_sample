@@ -52,6 +52,8 @@
 server "13.114.183.139",
   user: "ec2-user",
   roles: %w{web db app}
+set :rails_env, "production"
+set :"unicorn_rack_env","production"
 #   ssh_options: {
 #     user: "user_name", # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
