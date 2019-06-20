@@ -27,7 +27,9 @@ Things you may want to cover:
 ## User_table
 |Column|Type|Option|
 |------|----|------|
-|name|text||
+|nick_name|text|index: true|
+|email|text||
+|password|text||
 |user_evaluation_id|integer|
 |points|string||
 |total_sell_money|string||
@@ -56,8 +58,6 @@ belogs_to :user
 ## profile
 |Column|Type|Option|
 |------|----|------|
-|email|text||
-|password|text||
 |last_name|string||
 |first_name|string||
 |last_name(kana)|string||
