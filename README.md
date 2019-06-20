@@ -27,9 +27,9 @@ Things you may want to cover:
 ## User_table
 |Column|Type|Option|
 |------|----|------|
-|nick_name|text|index: true|
-|email|text||
-|password|text||
+|nick_name|string||
+|email|string| null: false,unique: true, default: ""|
+|encrypted_password|string|null: false, default: ""|
 |user_evaluation_id|integer|
 |points|string||
 |total_sell_money|string||
