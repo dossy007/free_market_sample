@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     Rails.env.production?
   end
   def configure_permitted_parameters
-  	devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:last_name,:first_name,:last_kana,:first_kana,:postal_code,:prefecture_id,:city_name,:house_number,:building_name,:phone_number])
   end
 
   def basic_auth
