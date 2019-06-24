@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_121144) do
+ActiveRecord::Schema.define(version: 2019_06_19_093143) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -28,25 +28,24 @@ ActiveRecord::Schema.define(version: 2019_06_19_121144) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_kana"
-    t.string "first_kana"
-    t.integer "birth_year"
-    t.integer "birth_month"
-    t.integer "birth_day"
-    t.integer "credit_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_kana"
+    t.string "first_kana"
+    t.string "postal_code"
+    t.integer "prefecture_id"
+    t.string "city_name"
+    t.string "house_number"
+    t.string "building_name"
+    t.integer "phone_number"
+    t.integer "birth_year"
+    t.integer "birth_month"
+    t.integer "birth_day"
+    t.integer "credit_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
