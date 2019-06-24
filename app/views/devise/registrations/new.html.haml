@@ -42,8 +42,7 @@
             = f.label :郵便番号
             %span.formRequired 必須
             %br/
-            = f.text_field :postal_code, autofocus: true, autocomplete: "off", placeholder: "例）123-4567", class: "inputField", required: minlength="7"
-          .deviseForm__field
+            = f.number_field :postal_code, autofocus: true, autocomplete: "off", placeholder: "例）1234567", class: "inputField", required: minlength="7"
             = f.label :都道府県
             %span.formRequired 必須
             %br/
