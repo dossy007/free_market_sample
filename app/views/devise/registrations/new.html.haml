@@ -20,7 +20,7 @@
             = f.label :パスワード
             %span.formRequired 必須
             %br/
-            = f.password_field :password, autocomplete: "off", placeholder: "６文字以上", class: "inputField", required: true
+            = f.password_field :password, autocomplete: "off", placeholder: "６文字以上", class: "inputField", required: minlength="6"
           .deviseForm__field
             = f.label :パスワード（確認）
             %span.formRequired 必須
