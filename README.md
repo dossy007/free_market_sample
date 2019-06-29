@@ -29,6 +29,7 @@ Things you may want to cover:
 |------|----|------|
 |nick_name|string||
 |email|string| null: false,unique: true, default: ""|
+|encrypted_password|string|null: false, default: ""|
 |last_name|string||
 |first_name|string||
 |last_name(kana)|string||
@@ -40,8 +41,8 @@ Things you may want to cover:
 |postal_code|integer||
 |prefecture|integer||
 |city_name|string||
+|house_number|string||
 |building_name|string||
-|encrypted_password|string|null: false, default: ""|
 |user_evaluation_id|integer|
 |points|string||
 |total_sell_money|string||
