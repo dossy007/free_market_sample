@@ -62,5 +62,10 @@ describe User do
         user.valid?
         expect(user.errors[:house_number]).to include("can't be blank")
     end
+    it "passwordが6文字以上でないとcreateは無効" do
+        user = build(:user ,password: "00000")
+        user.valid?
+        expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
+    end
   end
 end
