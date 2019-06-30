@@ -27,7 +27,22 @@ Things you may want to cover:
 ## User_table
 |Column|Type|Option|
 |------|----|------|
-|name|text||
+|nick_name|string||
+|email|string| null: false,unique: true, default: ""|
+|encrypted_password|string|null: false, default: ""|
+|last_name|string||
+|first_name|string||
+|last_name(kana)|string||
+|first_name(kana)|string||
+|birth_year|integer||
+|birth_month|integer||
+|birth_day|integer||
+|credit_id|integer||
+|postal_code|integer||
+|prefecture|integer||
+|city_name|string||
+|house_number|string||
+|building_name|string||
 |user_evaluation_id|integer|
 |points|string||
 |total_sell_money|string||
@@ -52,52 +67,6 @@ has_many :items_of_buyer, :through=> :deals_of_buyer, :source=> 'item'
 
 ## Association
 belogs_to :user
-
-## profile
-|Column|Type|Option|
-|------|----|------|
-|email|text||
-|password|text||
-|last_name|string||
-|first_name|string||
-|last_name(kana)|string||
-|first_name(kana)|string||
-|birth_year|integer||
-|birth_month|integer||
-|birth_day|integer||
-|credit_id|integer||
-|user|references|foreign_key: true|
-
-## Association
-belongs_to: user
-has_one: adress
-has_one: send_adress
-
-## Adress
-|Column|Type|Option|
-|------|----|------|
-|postal_code|integer||
-|prefecture|integer||
-|city_name|string||
-|building_name|string||
-|profile|references|foreign_key: true|
-
-## Association
-
-belongs_to :profile
-
-
-## Send_adress
-|Column|Type|Option|
-|------|----|------|
-|postal_code|integer||
-|prefecture|integer||
-|city_name|string||
-|building_name|string||
-|profile_id|references|foreign_key: true|
-
-## Association
-belongs_to :profile
 
 ## Deal
 |Column|Type|Option|

@@ -1,0 +1,73 @@
+.devise
+  = render "devise/shared/header"
+  .deviseSection
+    .inner
+      %h2.title 会員情報入力
+      .deviseForm
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .deviseForm__field.deviseForm__field--top
+            = f.label :ニックネーム
+            %span.formRequired 必須
+            %br/
+            = f.text_field :nickname, autofocus: true, autocomplete: "off", placeholder: "例）山田太郎", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :メールアドレス
+            %span.formRequired 必須
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :パスワード
+            %span.formRequired 必須
+            %br/
+            = f.password_field :password, autocomplete: "off", placeholder: "６文字以上", class: "inputField", required: minlength="6"
+          .deviseForm__field
+            = f.label :パスワード（確認）
+            %span.formRequired 必須
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "６文字以上", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :お名前
+            %span.formRequired 必須
+            %br/
+            = f.text_field :last_name, autofocus: true, autocomplete: "off", placeholder: "例）山田", class: "inputField", required: true
+            = f.text_field :first_name, autofocus: true, autocomplete: "off", placeholder: "例）太郎", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :お名前カナ
+            %span.formRequired 必須
+            %br/
+            = f.text_field :last_kana, autofocus: true, autocomplete: "off", placeholder: "例）ヤマダ", class: "inputField", required: true
+            = f.text_field :first_kana, autofocus: true, autocomplete: "off", placeholder: "例）タロウ", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :郵便番号
+            %span.formRequired 必須
+            %br/
+            = f.number_field :postal_code, autofocus: true, autocomplete: "off", placeholder: "例）1234567", class: "inputField", required: minlength="7"
+            = f.label :都道府県
+            %span.formRequired 必須
+            %br/
+            = f.collection_select :prefecture_id, Prefecture.all,:id, :name, placeholder: 0, autofocus: true, autocomplete: "off", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :市町村
+            %span.formRequired 必須
+            %br/
+            = f.text_field :city_name, autofocus: true, autocomplete: "off", placeholder: "例）横浜区緑区", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :番地
+            %span.formRequired 必須
+            %br/
+            = f.text_field :house_number, autofocus: true, autocomplete: "off", placeholder: "例）青山1-1-1", class: "inputField", required: true
+          .deviseForm__field
+            = f.label :建物名
+            %span.formRequired
+            %br/
+            = f.text_field :building_name, autofocus: true, autocomplete: "off", placeholder: "例）柳ビル101", class: "inputField"
+          .deviseForm__field
+            = f.label :電話番号
+            %span.formRequired
+            %br/
+            = f.text_field :phone_number, autofocus: true, autocomplete: "off", placeholder: "例）09012345678", class: "inputField"
+
+          .deviseForm__actions
+            = f.submit "次へ進む", class: "deviseBtn"
+  =render "devise/shared/footer"
