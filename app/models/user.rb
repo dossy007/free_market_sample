@@ -8,7 +8,8 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6}
 
   ##Assosiation
-  has_many :sns_credentials, denpendent: :destroy
+    has_many :sns_credentials, ->  { denpendent (:destroy) }
+
   belongs_to :user, optional: true
   extend ActiveHash::Associations::ActiveRecordExtensions
    belongs_to_active_hash :prefecture
