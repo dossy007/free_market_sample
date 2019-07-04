@@ -4,6 +4,7 @@
     .inner
       %h2.title 会員情報入力
       .deviseForm
+        = link_to "fb",user_facebook_omniauth_authorize_path
         = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
           = devise_error_messages!
           .deviseForm__field.deviseForm__field--top
