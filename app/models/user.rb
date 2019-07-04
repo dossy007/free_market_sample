@@ -18,7 +18,7 @@ class User < ApplicationRecord
    def self.find_oauth(auth)
    	uid = auth.uid
    	provider = auth.provider
-   	snscredential = SnsCredential.where(uid: uid, provider: provider).first
+   	snscredentials = SnsCredential.where(uid: uid, provider: provider).first
 
 	   	if snscredentials.present? #sns登録のみ完了してるuser
 	   		user = User.where(id: snscredential.user_id).first
