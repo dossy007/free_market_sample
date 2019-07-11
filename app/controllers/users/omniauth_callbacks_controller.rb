@@ -7,15 +7,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should also create an action method in this controller like this:
   # def twitter
   # end
-  def facebook
-    callback_for(:facebook)
-  end
+  def facebook; callback_for(:facebook); end
 
   def callback_for(provider)
     info = User.find_oauth(request.env["omniauth.auth"])
     @user = info[:user]
     sns_id = info[:sns_id]
-
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
