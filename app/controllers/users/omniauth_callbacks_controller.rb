@@ -18,7 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     else
       session["devise.sns_id"] = sns_id
-      render template: "devise/registrations/new"
+      render template: "devise/registrations/facebook"
     end
 
     def failure
