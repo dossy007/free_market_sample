@@ -1,17 +1,22 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.devise
+  = render "devise/shared/header"
+  .deviseSection
+    .inner.inner--narrow
+      .title.title--narrow
+        %p.newText アカウントをお持ちでない方はこちら
+        = link_to"新規会員登録", new_user_registration_path, class: "deviseBtn--blue"
+        = link_to "fbで会員登録",user_facebook_omniauth_authorize_path
+      .deviseForm.deviseForm--none
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .deviseForm__field
+            = f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス", class: "inputField", required: true
+          .deviseForm__field
+            = f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "inputField", required: true
+          - if devise_mapping.rememberable?
+            .remember__field
+              = f.check_box :remember_me
+              = f.label :このパスワードを記憶する
+          .deviseForm__actions
+            = f.submit "ログイン", class: "deviseBtn"
+        = link_to"パスワードをお忘れの方", new_user_password_path
+  = render "devise/shared/footer"
