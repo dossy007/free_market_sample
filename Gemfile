@@ -37,9 +37,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
-gem 'omniauth'
+gem 'omniauth','>= 1.8.0'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'google-api-client'
+gem 'dotenv-rails'
 group :production do
   gem 'unicorn','5.4.1'
 end
