@@ -5,7 +5,8 @@
       .title.title--narrow
         %p.newText アカウントをお持ちでない方はこちら
         = link_to"新規会員登録", new_user_registration_path, class: "deviseBtn--blue"
-        = link_to "fbで会員登録",user_facebook_omniauth_authorize_path
+        = link_to "fbで会員登録",user_facebook_omniauth_authorize_path, class: "deviseBtn--blue"
+        = link_to "googleで登録",user_google_oauth2_omniauth_authorize_path, class: "deviseBtn--blue"
       .deviseForm.deviseForm--none
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .deviseForm__field
