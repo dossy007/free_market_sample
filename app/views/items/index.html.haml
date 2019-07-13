@@ -124,7 +124,7 @@
     .productBox
       .productHead
         = link_to "#" do
-          %h3.title aa
+          %h3.title "カテゴリー名"
       .productLists{id: "slickLists--1"}
         - @items.each do |item|
           = render partial: "product_list",locals: {item: item}
