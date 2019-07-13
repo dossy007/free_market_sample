@@ -122,13 +122,12 @@
   %section.pickupContainer
     %h2.head ピックアップカテゴリー
     .productBox
-      - @items.each do |item|
-        .productHead
-          = link_to "#" do
-            %h3.title
-            = item.name
-        .productLists{id: "slickLists--0"}
-          = render []
+      .productHead
+        = link_to "#" do
+          %h3.title aa
+      .productLists{id: "slickLists--1"}
+        - @items.each do |item|
+          = render partial: "product_list",locals: {item: item}
   %section.pickupContainer
     %h2.head ピックアップブランド
     .productBox
