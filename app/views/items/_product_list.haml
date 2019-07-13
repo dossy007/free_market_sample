@@ -1,15 +1,16 @@
-.productList
-  = link_to item_path(item.id) do
-    %figure.productList--img
-      -# = image_tag"#{product.captured_images.first.content}"
-    .productList--body
-      %h3.name
-        = item.name
-      .details
-        %ul
-          %li
-          = item.price
-          円
-          %li
-            = fa_icon "heart", class: "likeIcon", text: item.text
-        %p (税込)
+- @items.each do |item|
+  .productList
+    = link_to item_path(item.id) do
+      %figure.productList--img
+        -# = image_tag"#{product.captured_images.first.content}"
+      .productList--body
+        %h3.name
+          = item.name
+        .details
+          %ul
+            %li
+            = item.price
+            円
+            %li
+              = fa_icon "heart", class: "likeIcon", text: item.text
+          %p (税込)
