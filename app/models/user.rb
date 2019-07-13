@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable,omniauth_providers: [:facebook]
+         :omniauthable,omniauth_providers: [:facebook,:google_oauth2]
   validates :nickname,:last_name,:first_name,:last_kana,:first_kana,:postal_code,:prefecture_id,:city_name,:house_number, presence: true
   validates :password, length: {minimum: 6}
 

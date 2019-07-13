@@ -8,6 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def twitter
   # end
   def facebook; callback_for(:facebook); end
+  def google_oauth2; callback_for(:google); end
 
   def callback_for(provider)
     info = User.find_oauth(request.env["omniauth.auth"])
@@ -18,7 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     else
       session["devise.sns_id"] = sns_id
-      render template: "devise/registrations/facebook"
+      render template: "devise/registrations/sns"
     end
 
     def failure
