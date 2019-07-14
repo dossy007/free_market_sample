@@ -10,6 +10,8 @@ stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
 
 timeout 60
 
+ENV['BUNDLE_GEMFILE'] = app_path + "/Gemfile"
+
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
 
