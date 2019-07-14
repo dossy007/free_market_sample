@@ -41,11 +41,11 @@
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+ set :ssh_options, {
+   keys: %w(/home/rlisowski/.ssh/id_rsa),
+   forward_agent: false,
+   auth_methods: %w(password)
+ }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
@@ -54,10 +54,10 @@ server "13.114.183.139",
   roles: %w{web db app}
 set :rails_env, "production"
 set :"unicorn_rack_env","production"
-  ssh_options: {
+#   ssh_options: {
 #     user: "user_name", # overrides user setting above
-    keys: %w(/home/user_name/.ssh/id_rsa),
+#     keys: %w(/home/user_name/.ssh/id_rsa),
 #     forward_agent: false,
-    auth_methods: %w(publickey password)
+#     auth_methods: %w(publickey password)
 #     # password: "please use keys"
-  }
+#   }
