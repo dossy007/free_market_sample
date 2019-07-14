@@ -3,9 +3,9 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  #local
-  config.omniauth :facebook,ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET']
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'] ,ENV['GOOGLE_CLIENT_SECRET']
+  # #local
+  # config.omniauth :facebook,ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET']
+  # config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'] ,ENV['GOOGLE_CLIENT_SECRET']
   # ec-2
   config.omniauth :facebook,ENV['FB_APP_ID'],ENV['FB_APP_SECRET']
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'] ,ENV['GOOGLE_CLIENT_SECRET']
