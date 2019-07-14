@@ -126,7 +126,9 @@
         = link_to "#" do
           %h3.title "カテゴリー名"
       .productLists{id: "slickLists--1"}
-        = render partial: "item", collection: @items
+        - @items.each do |item|
+          = render partial: "item", locals: {item: item}
+
   %section.pickupContainer
     %h2.head ピックアップブランド
     .productBox
