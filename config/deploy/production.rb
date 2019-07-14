@@ -41,12 +41,12 @@
 #
 # Global options
 # --------------
- set :ssh_options, {
- 	config: false
+ # set :ssh_options, {
+ 	# config: false
    # keys: %w(/home/rlisowski/.ssh/id_rsa),
    # forward_agent: false,
    # auth_methods: %w(password)
- }
+ # }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
