@@ -127,7 +127,20 @@
           %h3.title "カテゴリー名"
       .productLists{id: "slickLists--1"}
         - @items.each do |item|
-          = render partial:"item",locals:{item: item}
+          .productList
+            = link_to item_path(item.id) do
+              %figure.productList--img
+              .productList--body
+                %h3.name
+                  = item.name
+                .details
+                  %ul
+                    %li
+                    = item.price
+                    円
+                    %li
+                      = fa_icon "heart", class: "likeIcon", text: item.text
+                  %p (税込)
 
   %section.pickupContainer
     %h2.head ピックアップブランド
