@@ -7,7 +7,7 @@ Devise.setup do |config|
   # config.omniauth :facebook,ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET']
   # config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'] ,ENV['GOOGLE_CLIENT_SECRET']
   # ec-2
-  config.omniauth :facebook,ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET']
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'] ,ENV['GOOGLE_CLIENT_SECRET']
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
