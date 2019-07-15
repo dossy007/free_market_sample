@@ -42,6 +42,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'google-api-client'
 gem 'dotenv-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 group :production do
   gem 'unicorn','5.4.1'
 end
