@@ -13,11 +13,9 @@
               %br/
               %p 最大4枚までアップロードできます
               %ul.formUploader
-                = f.label :image do
-                  = f.file_field :image
-                  .uploadInfo
-                    %p ドラッグアンドドロップ
-                    %span またはクリックしてアップロード
+                = f.fields_for :images do |i|
+                  = i.label :image,"ドラッグアンドドロップまたはクリックしてアップロード"
+                  = i.file_field :image
           .formSection
             .productForm__field
               = f.label :商品名
