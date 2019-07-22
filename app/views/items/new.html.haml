@@ -16,6 +16,7 @@
                 = f.fields_for :images do |i|
                   = i.label :image,"ドラッグアンドドロップまたはクリックしてアップロード"
                   = i.file_field :image
+                  = image_tag "",id: :img
           .formSection
             / .productForm__field
             /   = f.label :商品名
