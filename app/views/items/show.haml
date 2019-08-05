@@ -31,13 +31,13 @@
           .itemBox__body
             %ul
               %li
-                = image_tag"", size: "300x285"
+                = image_tag @item.images.first.image.url, size: "300x285"
                 .soldout
                 .soldoutText 売り切れ
                 %ul
                   %li
                   - @item.images.each do |item|
-                    = image_tag item.image.url,size: ["70x70"]
+                    = image_tag item.image.url,size: ["30x30"]
                     / = item.id
               %li.table
                 %table
