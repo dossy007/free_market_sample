@@ -19,18 +19,14 @@ $(document).on('turbolinks:load', function(){
     // fileを取得
     if (file !== undefined) {  //fileの中身をキャンセルした時用
       var reader = new FileReader();
-      // data-idを取得
-      var form_id =$(this).parent().data('item-id')
       var form_class =$(this).parent()
+      var form_class_next =$(this).parent().next()
       form_class.css({
           'display': 'none'
       })
-
-      console.log(form_class)
-
-      // dropzone_box.css({
-      //     'display': 'none'
-      //   })
+      form_class_next.css({
+          'display': 'block'
+      })
       //filereaderのインスタンス作成
       inputs.push($(this));
       //配列にfileをpush
