@@ -96,6 +96,7 @@
           &--top {
             margin: 0;
             .formUploader {
+              width: 630px;
               font-size: 14px;
               background-color: $hexWhite;
               border: 0.5px dashed #ccc;
@@ -113,12 +114,58 @@
                   height: 20px;
                 }
               }
+              .form-area {
+                // height: 100px;
+                min-height: 184px;
+                display: block;
+              }
+              .input_area {
+                min-height: 184px;
+                display: block;
+              }
+              .add_image {
+              display: none;
+              }
               .thumb {
                 height: 80px;
-                width: 120px;
+                width: 115px;
+              }
+              #list {
+                display: flex;
+                width: 0px;
+                float:left;
+                // width: 135px;
+              }
+              .img_view {
+                position: relative;
+                height: 130px;
+                width: 157.5px;
+                .picture {
+                width: 150px;
+                height: 100px;
+                background-color: white;
+                }
+                .btn_left{
+                  display: inline;
+                  position: absolute;
+                  top: 0;
+                  left: 0.2em;
+                }
+                .btn_right {
+                  display: inline;
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                }
+              }
+              .btn_wrapper {
+                // height: 100px;
+              }
+              .btn {
+                // height: 20px;
               }
               .listGroupItem {
-                width: calc((100% - 2px) /  4);
+                width: calc(( 100% - 2px) /  4);
                 float: left;
                 position: relative;
                 img {
