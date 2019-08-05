@@ -11,18 +11,28 @@
               = f.label :出品画像
               %span.formRequired 必須
               %br/
-              %p 最大4枚までアップロードできます
+              %p 最大3枚までアップロードできます
               %ul.formUploader
+                #list
                 = f.fields_for :images do |i|
-                  = i.label :image,"ドラッグアンドドロップまたはクリックしてアップロード"
-                  = i.file_field :image
-                  = image_tag "",id: :img
+                  %li.form-area{"data-item-id": 0,style: "display:block"}
+                    = i.label :image,{class: "dropzone-box",}
+                    = i.file_field :image,class: "upload-image"
+                = f.fields_for :images do |i|
+                  %li.form-area{"data-item-id": 1,style: "display:none"}
+                    = i.label :image,{class: "dropzone-box","data-item_id": 1}
+                    = i.file_field :image,class: "upload-image"
+                = f.fields_for :images do |i|
+                  %li.form-area{"data-item-id": 2,style: "display:none"}
+                    = i.label :image,{class: "dropzone-box","data-item_id": 2}
+                    = i.file_field :image,class: "upload-image"
           .formSection
+
             / .productForm__field
             /   = f.label :商品名
             /   %span.formRequired 必須
             /   %br/
-            /   = f.text_field :name, required: true, placeholder: "商品名（40字まで）", class: "inputField"
+            /= f.text_field :name, required: true, placeholder: "商品名（40字まで）", class: "inputField"
             / .productForm__field
             /   = f.label :商品の説明
             /   %span.formRequired 必須
