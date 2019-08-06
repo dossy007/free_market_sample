@@ -85,3 +85,4 @@ gem 'enum_help'
 gem 'pry-rails'
 gem 'active_hash'
 gem "font-awesome-rails"
+gem 'closure_tree'
