@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
   def new
   	@item = Item.new
     @item.images.build
+    @categories = Category.new
+    @topcategories = Category.all.order("id ASC").limit(13)
   end
 
   def show
