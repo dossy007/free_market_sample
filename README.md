@@ -94,7 +94,7 @@ belongs_to :buyer, :class_name=>'Item'
 |text|text||
 |comment|references|foreign_key :true|
 |good_function|integer||
-
+|category_id|references|foreign_key: true|
 ## Association
 has_many :item_comments
 has_many :item_imgs
