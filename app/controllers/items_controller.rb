@@ -45,4 +45,7 @@ private
   def value_params
     params[:value_id].to_i
   end
+  def middle_params
+    params[:middle_id].to_i
+  end
 end
