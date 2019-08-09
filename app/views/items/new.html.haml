@@ -28,25 +28,26 @@
                     = i.file_field :image,class: "upload-image"
           .formSection
 
-            / .productForm__field
-            /   = f.label :商品名
-            /   %span.formRequired 必須
-            /   %br/
-            /= f.text_field :name, required: true, placeholder: "商品名（40字まで）", class: "inputField"
-            / .productForm__field
-            /   = f.label :商品の説明
-            /   %span.formRequired 必須
-            /   %br/
-            /   = f.text_area :text, required: true, placeholder: "商品説明（1,000字まで）例）2018年に購入した、革ジャンです。黒みがかった見た目です。傷等はございません。", class: "inputField inputField__area", rows: "7"
+            .productForm__field
+              = f.label :商品名
+              %span.formRequired 必須
+              %br/
+              / = f.text_field :name, required: true, placeholder: "商品名（40字まで）", class: "inputField"
+            .productForm__field
+              = f.label :商品の説明
+              %span.formRequired 必須
+              %br/
+              / # = f.text_area :text, required: true, placeholder: "商品説明（1,000字まで）例）2018年に購入した、革ジャンです。黒みがかった見た目です。傷等はございません。", class: "inputField inputField__area", rows: "7"
           .formSection
             .contentLeft
               %h3 商品の詳細
             .contentRight
-              / .productForm__field.productForm__field--category
-              /   = f.label :カテゴリー
-              /   %span.formRequired 必須
-              /   %br/
-              /   = f.collection_select(:size, [], :id , :name, {prompt: "---"}, {class: "inputField inputField__select", id: "category", required: true})
+              .productForm__field.productForm__field--category
+                = f.label :category_id do
+                  カテゴリー
+                  %span.formRequired 必須
+                  %br/
+                  = f.collection_select :category_id, @topcategories,:id,:name,{include_blank: "---"},class: "inputField inputField__select",required: true
               .productForm__field
                 = f.label :ブランド
                 %br/
@@ -94,7 +95,7 @@
                     = f.label :価格（円）
                     %span.formRequired 必須
                   %li
-                    = f.text_field :price, required: true, placeholder: "例）1,000", class: "inputField"
+                    / # = f.text_field :price, required: true, placeholder: "例）1,000", class: "inputField"
               .profitholder
                 %ul
                   %li 販売手数料（10%）
