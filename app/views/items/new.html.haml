@@ -48,6 +48,7 @@
                   %span.formRequired 必須
                   %br/
                   = f.collection_select :category_id, @topcategories,:id,:name,{include_blank: "---"},class: "inputField inputField__select",required: true
+                  #category
               .productForm__field
                 = f.label :ブランド
                 %br/
