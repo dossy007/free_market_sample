@@ -26,9 +26,19 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  # ajax用
+  def search
+    @m_category = Category.find(value_params).children
+    # binding.pry
+  end
+
 
 private
   def item_params
 		params.require(:item).permit(:text, :name, :price, images_attributes: [:image])
+  end
+
+  def value_params
+    params[:value_id].to_i
   end
 end
