@@ -23,7 +23,11 @@ class ItemsController < ApplicationController
   def create
   	@item = Item.new(item_params)
     @item.save
-    redirect_to root_path
+      if item_params[:images_attributes] == nil
+        redirect_to new_item_path, flash: {alert: "image抜けとるんと違うか?"}
+      else
+        redirect_to root_path
+      end
   end
 
   # ajax用
