@@ -28,7 +28,11 @@ class ItemsController < ApplicationController
 
   # ajax用
   def search
+    if params[:value_id]
     @m_category = Category.find(value_params).children
+  else
+    @s_category = Category.find(middle_params).children
+  end
     # binding.pry
   end
 
