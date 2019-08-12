@@ -31,7 +31,8 @@ $(document).on('turbolinks:load', function() {
 		var value_id = $(this).val()
 		$("#middle_category").remove()
 		$("#sub_category").remove()
-		// ajaxをajaxをajaxを空じゃない時に使用
+
+		// value_idが空ではない時にajazを使用
 		if(value_id !== ""){
 			$.ajax({
 				type: "GET",
@@ -49,7 +50,7 @@ $(document).on('turbolinks:load', function() {
 		}
 	})
 
-//動的に追加したhtmlはdocument.onで指定すれば取得できる
+//動的に追加したhtmlはdocument.onで指定
 	$(document).on("change","#middle_category",function() {
 		console.log("11")
 		middle_c = $(this).val()
