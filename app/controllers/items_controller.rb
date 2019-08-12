@@ -17,11 +17,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-  	@item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def create
-  	@item = Item.new(item_params)
+    @item = Item.new(item_params)
     @item.save
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, flash: {alert: "image抜けとるんと違うか?"}
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
 
 private
   def item_params
-		params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id, images_attributes: [:image])
+    params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id, images_attributes: [:image])
   end
 
   def value_params
