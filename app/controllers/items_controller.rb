@@ -37,7 +37,6 @@ class ItemsController < ApplicationController
     else
       @s_category = Category.find(middle_params).children
     end
-    # binding.pry
   end
 
 
