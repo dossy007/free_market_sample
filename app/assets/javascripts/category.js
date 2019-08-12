@@ -40,7 +40,6 @@
 				data:{value_id: value_id},
 				dataType: "json"
 			})
-
 			.done(function(middle_category) {
 				appendOption(1)
 				middle_category.forEach(function(middle) {
@@ -51,26 +50,20 @@
 	})
 
 //動的に追加したhtmlはdocument.onで指定
-	$(document).on("change","#middle_category",function() {
-		console.log("11")
-		middle_c = $(this).val()
-		$("#sub_category").remove()
-		console.log(middle_c)
-
-		$.ajax({
+  $(document).on("change","#middle_category",function() {
+  	middle_c = $(this).val()
+  	$("#sub_category").remove()
+  	$.ajax({
 			type: "GET",
 			url: "/items/search",
 			data: {middle_id: middle_c},
 			dataType: "json"
 		})
 		.done(function(sub_category) {
-			console.log(sub_category)
 			appendOption(2)
 			sub_category.forEach(function(sub){
 				appendCategory(sub,2)
 			})
-
 		})
 	})
-
 })
