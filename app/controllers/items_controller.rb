@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-  	@item = Item.new
+    @item = Item.new
     @item.images.build
     @categories = Category.new
     @topcategories = Category.all.order("id ASC").limit(13)
