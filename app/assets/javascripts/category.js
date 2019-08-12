@@ -14,23 +14,23 @@
 		 cat_id.append(html)
 		}
 
-	function appendCategory(category, num) {
-		if(num == 1) {
-			var append_id = $("#middle_category")
-		}else if (num == 2) {
-			var append_id = $("#sub_category")
-		}
-		append_id.append(
-			$("<option>")
-			.val($(category).attr("id"))
-			.text($(category).attr("name"))
-		)
-	}
+  function appendCategory(category, num) {
+  	if(num == 1) {
+  		var append_id = $("#middle_category")
+  	}else if (num == 2) {
+  		var append_id = $("#sub_category")
+  	}
+  	append_id.append(
+  		$("<option>")
+  		.val($(category).attr("id"))
+  		.text($(category).attr("name"))
+  		)
+  }
 
-	$("#item_category_id").on("change",function() {
-		var value_id = $(this).val()
-		$("#middle_category").remove()
-		$("#sub_category").remove()
+  $("#item_category_id").on("change",function() {
+  	var value_id = $(this).val()
+  	$("#middle_category").remove()
+  	$("#sub_category").remove()
 
 		// value_idが空ではない時にajazを使用
 		if(value_id !== ""){
