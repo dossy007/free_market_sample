@@ -42,6 +42,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'google-api-client'
 gem 'dotenv-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'jquery-rails'
 group :production do
   gem 'unicorn','5.4.1'
 end
@@ -82,3 +85,4 @@ gem 'enum_help'
 gem 'pry-rails'
 gem 'active_hash'
 gem "font-awesome-rails"
+gem 'closure_tree'
