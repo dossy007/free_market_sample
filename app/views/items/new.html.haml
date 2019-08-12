@@ -32,12 +32,12 @@
               = f.label :商品名
               %span.formRequired 必須
               %br/
-              / = f.text_field :name, required: true, placeholder: "商品名（40字まで）", class: "inputField"
+              = f.text_field :name, required: true, placeholder: "商品名（40字まで）", class: "inputField",maxlength: 40
             .productForm__field
               = f.label :商品の説明
               %span.formRequired 必須
               %br/
-              / # = f.text_area :text, required: true, placeholder: "商品説明（1,000字まで）例）2018年に購入した、革ジャンです。黒みがかった見た目です。傷等はございません。", class: "inputField inputField__area", rows: "7"
+              = f.text_area :text, required: true, placeholder: "商品説明（1,000字まで）例）2018年に購入した、革ジャンです。黒みがかった見た目です。傷等はございません。", class: "inputField inputField__area", rows: "7",maxlength:1000
           .formSection
             .contentLeft
               %h3 商品の詳細
@@ -52,13 +52,13 @@
               .productForm__field
                 = f.label :ブランド
                 %br/
-                / = f.text_field :brand, placeholder: "例) ルイ ヴィトン"
+                = f.text_field :brand, placeholder: "例) ルイ ヴィトン"
               .resultLists
               .productForm__field
                 = f.label :商品の状態
                 %span.formRequired 必須
                 %br/
-                / = f.select(:shopping_status, [["新品/未使用", 0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["状態が悪い", 5]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
+                = f.select(:shopping_status, [["新品/未使用", 0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["状態が悪い", 5]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
           .formSection
             .contentLeft
               %h3
@@ -71,17 +71,17 @@
                 = f.label :配送料の負担
                 %span.formRequired 必須
                 %br/
-                / = f.select(:shopping_method, [["送料込み（出品者負担）", 0], ["着払い（購入者負担）", 1]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
-              / .productForm__field
-              /   = f.label :発送元の地域
-              /   %span.formRequired 必須
-              /   %br/
-              /   = f.collection_select(:price, [], :id, :name, {prompt: "---"}, {class: "inputField inputField__select", required: true})
+                = f.select(:send_burden, [["送料込み（出品者負担）", 0], ["着払い（購入者負担）", 1]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
               .productForm__field
-                / = f.label :発送までの日数
-                / %span.formRequired 必須
-                / %br/
-                / = f.select(:delivery_date, [["1-2日で発送", 0], ["2-3日で発送", 1], ["4-7日で発送", 2]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
+                = f.label :発送元の地域
+                %span.formRequired 必須
+                %br/
+                = f.collection_select :prefecture_id, Prefecture.all,:id, :name,{include_blank: "---"},class: "inputField inputField__select",required: true
+              .productForm__field
+                = f.label :発送までの日数
+                %span.formRequired 必須
+                %br/
+                = f.select(:delivery_date, [["1-2日で発送", 0], ["2-3日で発送", 1], ["4-7日で発送", 2]], {prompt: "---"}, {class: "inputField inputField__select", required: true})
           .formSection
             .contentLeft
               %h3
@@ -96,7 +96,7 @@
                     = f.label :価格（円）
                     %span.formRequired 必須
                   %li
-                    / # = f.text_field :price, required: true, placeholder: "例）1,000", class: "inputField"
+                    = f.text_field :price, required: true, placeholder: "例）1,000", class: "inputField"
               .profitholder
                 %ul
                   %li 販売手数料（10%）
