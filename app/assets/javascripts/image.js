@@ -5,19 +5,16 @@ $(document).on('turbolinks:load', function(){
   var dropzone2 = $('.form-area2');
   var dropzone_box = $('.dropzone-box');
   var images = [];
-  // ボタンがついたhtmlの情報
   var inputs  =[];
   var input_area = $('.form_area');
-  // inputするfilefieldの上のclass
   var preview = $('#list');
   var preview2 = $('#list2');
-//jquryobjectにしている
 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
-    // imageがinputに入ったら
     var file = $(this).prop('files')[0];
-    // fileを取得
-    if (file !== undefined) {  //fileの中身をキャンセルした時用
+
+    //input_fileの中身をキャンセルした場合
+    if (file !== undefined) {
       var reader = new FileReader();
       var form_class =$(this).parent()
       var form_class_next =$(this).parent().next()
@@ -27,26 +24,17 @@ $(document).on('turbolinks:load', function(){
       form_class_next.css({
           'display': 'block'
       })
-      //filereaderのインスタンス作成
       inputs.push($(this));
-      //配列にfileをpush
       var img = $(`<div class= "img_view"><img class="picture"></div>`);
-      // imgclassを持つ変数を定義
       reader.onload = function(e) {
-        //onloadでfileを読み込む
         var btn_wrapper = $('<p class="btn_left">編集</p><p class="btn_right">削除</p>');
-        //削除などのボタンのclassを定義
         img.append(btn_wrapper);
-        // imgclassを持つ変数にボタンをappend
         img.find('img').attr({
-          // imgからimgを探しsrcをresultとして返す
           src: e.target.result
         })
       }
       reader.readAsDataURL(file);
-      //readerでfilefileを取得
       images.push(img);
-      // 配列にボタンがついたhtmlを入れ込む
       preview.css({
         'width': '+=157.5px'
       });
@@ -59,15 +47,6 @@ $(document).on('turbolinks:load', function(){
         })
       }
 
-
-      //   if(images.length == 9) {
-      //     // 配列の数が9なら
-      //     dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
-      //     // id2のpをiclassにreplace
-      //   }
-      // } else {
-        // 配列が9以外なら
-          // $('#preview').empty();
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview.append(image);
@@ -77,7 +56,6 @@ $(document).on('turbolinks:load', function(){
       })
     }
   });
-
 
 
   $(document).on('click', '.delete', function() {
