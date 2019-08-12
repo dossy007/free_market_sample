@@ -1,24 +1,5 @@
 = render "shared/header"
-%nav.breadCrumbs
-  %ul
-    %li
-      = link_to "メルカリ", root_path
-    %li
-      = fa_icon "angle-right"
-    %li
-      = link_to "hoge", ""
-    %li
-      = fa_icon "angle-right"
-    %li
-      = link_to "fuga", ""
-    %li
-      = fa_icon "angle-right"
-    %li
-      = link_to "piyo", ""
-    %li
-      = fa_icon "angle-right"
-    %li
-      %p 名前
+
 .main
   .showMain
     .contentLeft
@@ -81,8 +62,8 @@
               (税込)
             %span
               送料込み
-          .itemBox__buy
-            購入画面に
+          .buyBtn
+            購入画面に進む
           .itemDetail 詳細情報
           %ul
             - if user_signed_in?
