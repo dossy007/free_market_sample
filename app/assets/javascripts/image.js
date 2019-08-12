@@ -1,5 +1,4 @@
 
-
 $(document).on('turbolinks:load', function(){
   var dropzone = $('.form-area');
   var dropzone2 = $('.form-area2');
