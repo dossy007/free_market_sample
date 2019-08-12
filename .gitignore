@@ -31,4 +31,4 @@
 /config/master.key
 /facebook_env.env
 /.env
-/public/uploads/image/image
+/public/uploads
