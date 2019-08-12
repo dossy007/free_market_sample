@@ -54,10 +54,10 @@
   	middle_c = $(this).val()
   	$("#sub_category").remove()
   	$.ajax({
-			type: "GET",
-			url: "/items/search",
-			data: {middle_id: middle_c},
-			dataType: "json"
+  		type: "GET",
+  		url: "/items/search",
+  		data: {middle_id: middle_c},
+  		dataType: "json"
 		})
 		.done(function(sub_category) {
 			appendOption(2)
