@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2019_08_06_071553) do
     t.integer "shopping_status"
     t.integer "send_burden"
     t.integer "shopping_method"
-    t.integer "prefecture"
     t.integer "delivery_date"
     t.integer "price"
     t.text "text"
@@ -51,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_08_06_071553) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+    t.integer "prefecture_id"
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 

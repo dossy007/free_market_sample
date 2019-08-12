@@ -7,7 +7,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :shopping_status
       t.integer :send_burden
       t.integer :shopping_method
-      t.integer :prefecture
       t.integer :delivery_date
       t.integer :price
       t.text :text
