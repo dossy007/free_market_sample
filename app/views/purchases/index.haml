@@ -1,0 +1,15 @@
+.devise
+  = render "devise/shared/header"
+  .main
+  .showMain
+    .contentLeft
+      = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8" do
+        = image_tag"side_banner.jpg", size: "280x238"
+    .contentRight
+      .topContent
+        .itemBox
+          %h2.itemBox__name 購入内容
+          .itemBox__body
+            %ul
+              %li
+  = render "devise/shared/footer"
