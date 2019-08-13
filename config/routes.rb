@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   		get 'search'
   	end
   	resources :images
+    resources :purchases
   end
 
   resources :users
