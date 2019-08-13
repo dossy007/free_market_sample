@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   		get 'search'
   	end
   	resources :images
-    resources :purchases
+    resources :purchases do
+      collection do
+        get 'pay'
+      end
+    end
   end
 
   resources :users
