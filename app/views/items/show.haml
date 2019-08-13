@@ -62,8 +62,9 @@
               (税込)
             %span
               送料込み
-          .buyBtn
-            購入画面に進む
+            = link_to item_purchases_path(@item.id) do
+              .buyBtn
+                購入画面に進む
           .itemDetail 詳細情報
           %ul
             - if user_signed_in?
