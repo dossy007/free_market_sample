@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   		get 'search'
   	end
   	resources :images
-    resources :purchases do
+    resources :cards do
       collection do
-        get 'pay'
+        post 'pay'
       end
     end
   end
