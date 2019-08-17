@@ -9,8 +9,8 @@ class CardsController < ApplicationController
   def create
     if current_user.card.present?
 		card = Card.where(user_id: current_user.id).first
-  		Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-  		customer = Payjp::Customer.retrieve(card.customer_id)
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+		customer = Payjp::Customer.retrieve(card.customer_id)
   		customer.delete
   		card.delete
     end
