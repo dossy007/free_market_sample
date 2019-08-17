@@ -2,7 +2,7 @@ class CardsController < ApplicationController
 	require "payjp"
 
   def new
-  	@item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
   	card = Card.where(user_id: current_user.id)
   end
 
