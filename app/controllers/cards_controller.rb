@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-	require "payjp"
+  require "payjp"
 
   def new
     @item = Item.find(params[:item_id])

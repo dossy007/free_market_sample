@@ -10,7 +10,7 @@ class User < ApplicationRecord
   ##Assosiation
     has_many :sns_credentials, ->  { denpendent (:destroy) }
   	belongs_to :user, optional: true
-  	has_one :card
+    has_one :card
   extend ActiveHash::Associations::ActiveRecordExtensions
   	belongs_to_active_hash :prefecture
 
