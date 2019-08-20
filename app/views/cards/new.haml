@@ -44,10 +44,10 @@
               クレジットカード
             = form_tag action: :create, method: :post do
               :plain
-                <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_83e5b72f0ee8f5f858101282"></script>
+                <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_83e5b72f0ee8f5f858101282" data-text="カード情報を入力する"></script>
 
-            = link_to "", class: "purchase-box__edit" do
-              %span 登録する
-              = fa_icon "chevron-right"
+            / = link_to "", class: "purchase-box__edit" do
+            /   %span 登録する
+            /   = fa_icon "chevron-right"
 
   = render 'shared/footer'
