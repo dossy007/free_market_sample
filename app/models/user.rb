@@ -11,6 +11,10 @@ class User < ApplicationRecord
     has_many :sns_credentials, ->  { denpendent (:destroy) }
   	belongs_to :user, optional: true
     has_one :card
+    has_many :deals_of_seller, :class_name => 'Deal', :foreign_key =>'seller_id'
+		has_many :deals_of_buyer, :class_name => 'Deal', :foreign_key =>'buyer_id'
+		has_many :items_of_seller, :through => :deals_of_seller, :source =>'item'
+		has_many :items_of_buyer, :through => :deals_of_buyer, :source => 'item'
   extend ActiveHash::Associations::ActiveRecordExtensions
   	belongs_to_active_hash :prefecture
 
