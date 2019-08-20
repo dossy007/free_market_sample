@@ -36,10 +36,15 @@
       .purchase-box__user-info
         .purchase-box__user-content
           .purchase-box__user-content__head
-            %h3.purchase-box__user-content__head カード情報
+            %h3.purchase-box__user-content__head
             .purchase-box__user-content__foot
               - if @card_information
-                = "**** **** ****" + @card_information.last4
+                %span カード情報
+                .card_field
+                  = "**** **** ****" + @card_information.last4
+                %span 有効期限 月/年
+                .card_field
+                  = @card_information.exp_month.to_s + "/" + @card_information.exp_year.to_s.slice(2,3)
             .purchase-box__user-content__address
               クレジットカード
             = form_tag action: :create, method: :post do
