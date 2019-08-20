@@ -113,6 +113,13 @@
         margin: 0;
       }
     }
+    &__foot {
+      .card_field {
+        border: solid 1px black;
+        width: 10rem;
+        height: 1.5rem;
+      }
+    }
 
     &__address {
       margin: 8px 0 0;
