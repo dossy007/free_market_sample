@@ -3,7 +3,11 @@ class CardsController < ApplicationController
 
   def new
     @item = Item.find(params[:item_id])
-    card = Card.where(user_id: current_user.id)
+    card = Card.where(user_id: current_user.id).first
+    if card != nil
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card_information = customer.cards.retrieve(card.card_id)
+    end
   end
 
   def create
