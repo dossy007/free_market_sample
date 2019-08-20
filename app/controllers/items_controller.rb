@@ -26,6 +26,8 @@ class ItemsController < ApplicationController
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, flash: {alert: "image抜けとるんと違うか?"}
       else
+        deal = Deal.create(deal_params)
+        deal.save(validate: false)
         redirect_to root_path
       end
   end
@@ -43,6 +45,10 @@ class ItemsController < ApplicationController
 private
   def item_params
     params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id, images_attributes: [:image])
+  end
+
+  def deal_params
+    {seller_id: current_user.id,item_id: @item.id}
   end
 
   def value_params
