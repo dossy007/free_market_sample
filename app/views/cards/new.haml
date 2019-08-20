@@ -23,7 +23,7 @@
               .purchase-box__price__right
                 %span
                   ￥ #{@item.price.to_s(:delimited)}
-            = link_to "購入する", "#", class: "purchase-box__purchase-btn", method: :post
+            = link_to "購入する", pay_item_cards_path(@item.id), class: "purchase-box__purchase-btn", method: :post
 
       .purchase-box__user-info
         .purchase-box__user-content
