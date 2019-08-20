@@ -36,7 +36,10 @@
       .purchase-box__user-info
         .purchase-box__user-content
           .purchase-box__user-content__head
-            %h3.purchase-box__user-content__head 支払い方法
+            %h3.purchase-box__user-content__head カード情報
+            .purchase-box__user-content__foot
+              - if @card_information
+                = "**** **** ****" + @card_information.last4
             .purchase-box__user-content__address
               クレジットカード
             = form_tag action: :create, method: :post do
