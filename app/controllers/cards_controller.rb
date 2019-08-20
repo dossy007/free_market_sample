@@ -7,8 +7,8 @@ class CardsController < ApplicationController
   end
 
   def create
-    if current_user.card.present?
-		  card = Card.where(user_id: current_user.id).first
+    if current_user.card.present?  #既に登録されていたら、削除
+      card = Card.where(user_id: current_user.id).first
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
@@ -29,5 +29,8 @@ class CardsController < ApplicationController
       @card.save
       redirect_to action: "new"
     end
+  end
+
+  def pay
   end
 end
