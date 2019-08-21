@@ -26,8 +26,8 @@ class ItemsController < ApplicationController
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, flash: {alert: "image抜けとるんと違うか?"}
       else
-        deal = Deal.create(deal_params)
-        deal.save(validate: false)
+        sell = Sell.create(deal_params)
+        sell.save
         redirect_to root_path
       end
   end
@@ -48,7 +48,7 @@ private
   end
 
   def deal_params
-    {seller_id: current_user.id,item_id: @item.id}
+    {user_id: current_user.id,item_id: @item.id}
   end
 
   def value_params
