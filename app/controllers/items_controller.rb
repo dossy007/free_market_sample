@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
       else
         sell = Sell.create(deal_params)
         sell.save
+        redirect_to action: new if sell.save == false
         redirect_to root_path
       end
   end
