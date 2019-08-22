@@ -13,6 +13,7 @@
             %ul
               %li
                 = image_tag @item.images.first.image.url, size: "300x285"
+              - if @item.buy.present?
                 .soldout
                 .soldoutText 売り切れ
                 %ul
