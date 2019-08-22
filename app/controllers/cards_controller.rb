@@ -23,7 +23,7 @@ class CardsController < ApplicationController
 
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     if params['payjp-token'].blank?
-      redirect_to action: new,flash: {alert: "payjpに不具合"}
+      redirect_to action: new,flash: {alert: "payjp-tokenが見つかりません"}
     else
       customer = Payjp::Customer.create(
       description: 'テスト',
@@ -49,7 +49,7 @@ class CardsController < ApplicationController
       if buy.valid?
         redirect_to root_path
       else
-        redirect_to new_item_card_path, flash: {alert: "#{buy.errors.full_messages.count}件のエラーが発生"}
+        redirect_to new_item_card_path,flash: {notice: "#{buy.errors.full_messages}"}
       end
   end
 
