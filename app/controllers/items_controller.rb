@@ -28,8 +28,11 @@ class ItemsController < ApplicationController
       else
         sell = Sell.create(deal_params)
         sell.save
-        redirect_to action: new if sell.save == false
-        redirect_to root_path
+        if sell.valid?
+          redirect_to root_path
+        else
+          redirect_to new_item_path, flash: {alert: "#{sell.errors.full_messages.count}件のエラーが発生"}
+        end
       end
   end
 
