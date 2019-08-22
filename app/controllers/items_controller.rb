@@ -26,9 +26,8 @@ class ItemsController < ApplicationController
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, flash: {alert: "image抜けとるんと違うか?"}
       else
-        sell = Sell.create(deal_params)
-        sell.save
-        if sell.valid?
+        sell = Sell.new(deal_params)
+        if sell.save
           redirect_to root_path
         else
           redirect_to new_item_path,flash: {notice: "#{sell.errors.full_messages}"}
