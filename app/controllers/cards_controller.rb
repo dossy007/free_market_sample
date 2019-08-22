@@ -31,7 +31,7 @@ class CardsController < ApplicationController
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       )
-      #うまく、customerが作成できない場合
+      #customer.newが使えないため
       if (customer.cards.count == 0 || customer.default_card == nil)
         redirect_to new_item_card_path,flash: {notice: "不正なtoken"}
       else
