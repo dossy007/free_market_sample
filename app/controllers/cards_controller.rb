@@ -31,9 +31,13 @@ class CardsController < ApplicationController
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       )
-      @card = Card.new(user_id: current_user.id,customer_id: customer.id, card_id: customer.default_card)
-      @card.save
-      redirect_to action: new
+      #うまく、customerが作成できない場合
+      if (customer.cards.count == 0 || customer.default_card == nil)
+        redirect_to new_item_card_path,flash: {notice: "不正なtoken"}
+      else
+        card = Card.create(user_id: current_user.id,customer_id: customer.id, card_id: customer.default_card)
+        redirect_to new_item_card_path
+      end
     end
   end
 
@@ -44,9 +48,8 @@ class CardsController < ApplicationController
         amount: params[:price],
         customer: customer,
         currency: 'jpy')
-      buy = Buy.create(buy_params)
-      buy.save
-      if buy.valid?
+      buy = Buy.new(buy_params)
+      if buy.save
         redirect_to root_path
       else
         redirect_to new_item_card_path,flash: {notice: "#{buy.errors.full_messages}"}
