@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
         if sell.valid?
           redirect_to root_path
         else
-          redirect_to new_item_path, flash: {alert: "#{sell.errors.full_messages.count}件のエラーが発生"}
+          redirect_to new_item_path,flash: {notice: "#{sell.errors.full_messages}"}
         end
       end
   end
