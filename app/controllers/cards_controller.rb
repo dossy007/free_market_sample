@@ -46,7 +46,11 @@ class CardsController < ApplicationController
         currency: 'jpy')
       buy = Buy.create(buy_params)
       buy.save
-      redirect_to root_path
+      if buy.valid?
+        redirect_to root_path
+      else
+        redirect_to new_item_card_path, flash: {alert: "#{buy.errors.full_messages.count}件のエラーが発生"}
+      end
   end
 
   private
