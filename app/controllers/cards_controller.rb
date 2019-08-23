@@ -51,8 +51,10 @@ class CardsController < ApplicationController
       if buy.save
         redirect_to root_path
       else
-        redirect_to new_item_card_path,flash: {notice: "#{buy.errors.full_messages}"}
+        redirect_to new_item_card_path,flash: {alert: "#{buy.errors.full_messages}"}
       end
+      rescue => e
+        redirect_to new_item_card_path, alert: "購入に失敗しました"
   end
 
   private
