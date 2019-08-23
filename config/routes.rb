@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   		get 'search'
   	end
   	resources :images
+    resources :cards do
+      collection do
+        post 'pay'
+      end
+    end
   end
 
   resources :users

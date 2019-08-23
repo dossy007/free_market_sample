@@ -1,0 +1,140 @@
+.purchase-box {
+  padding: 24px 12.5% 0;
+  text-align: center;
+
+  &__inner {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 148px;
+    height: 148px;
+    margin: 0 auto;
+
+    img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+    }
+  }
+
+  &__name {
+    margin: 8px 0 0;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &__prices {
+    p {
+      margin: 8px 0 0;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.5;
+
+      span {
+        display: inline-block;
+        margin: 0 0 0 8px;
+        font-weight: 400;
+        font-size: 14px;
+      }
+    }
+
+    .no-point {
+      width: 100%;
+      margin: 16px 0 0;
+      padding: 16px;
+      background-color: #ccc;
+      border: 1px solid #ccc;
+    }
+  }
+
+  &__price {
+    @include clearfix;
+    width: 100%;
+    font-weight: 600;
+    font-size: 28px;
+
+    &__left {
+      float: left;
+      width: 50%;
+      padding: 16px 0;
+      text-align: left;
+    }
+
+    &__right {
+      float: right;
+      width: 50%;
+      padding: 16px 0;
+      text-align: right;
+
+      span {
+        margin: 16px 0 0;
+        font-size: 28px;
+      }
+    }
+  }
+
+  &__purchase-btn {
+    display: block;
+    width: 100%;
+    margin: 16px 0;
+    padding: 16px;
+    color: #fff;
+    background: #888;
+    border: 1px solid #888;
+    cursor: pointer;
+  }
+
+  &__user-info {
+    margin: 40px 0 0;
+    padding: 24px 12.5% 0;
+    border-top: 1px solid #f5f5f5;
+
+    &:last-child {
+      padding: 24px 12.5% 40px;
+    }
+  }
+
+  &__user-content {
+    max-width: 320px;
+    margin: 0 auto;
+
+    &__head {
+      margin: 40px 0 0;
+      font-size: 14px;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+    &__foot {
+      .card_field {
+        border: solid 1px black;
+        width: 10rem;
+        height: 1.5rem;
+      }
+    }
+
+    &__address {
+      margin: 8px 0 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  }
+
+  &__edit {
+    display: block;
+    margin: 8px 0 0 0;
+    text-align: right;
+
+    i {
+      font-size: 10px;
+    }
+  }
+}

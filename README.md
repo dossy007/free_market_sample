@@ -78,6 +78,9 @@ belogs_to :user
 ## Association
 belongs_to :seller, :class_name=>'User'
 belongs_to :buyer, :class_name=>'Item'
+belongs_to :item
+has_many :items_of_seller, :through => :deals_of_seller
+
 
 ## Item
 |Column|Type|Option|

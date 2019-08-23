@@ -1,24 +1,5 @@
 = render "shared/header"
-%nav.breadCrumbs
-  %ul
-    %li
-      = link_to "メルカリ", root_path
-    %li
-      = fa_icon "angle-right"
-    %li
-      = link_to "hoge", ""
-    %li
-      = fa_icon "angle-right"
-    %li
-      = link_to "fuga", ""
-    %li
-      = fa_icon "angle-right"
-    %li
-      = link_to "piyo", ""
-    %li
-      = fa_icon "angle-right"
-    %li
-      %p 名前
+
 .main
   .showMain
     .contentLeft
@@ -32,6 +13,7 @@
             %ul
               %li
                 = image_tag @item.images.first.image.url, size: "300x285"
+              - if @item.buy.present?
                 .soldout
                 .soldoutText 売り切れ
                 %ul
@@ -81,7 +63,9 @@
               (税込)
             %span
               送料込み
-            -# 購入ボタンはつけてください
+            = link_to new_item_card_path(@item.id) do
+              .buyBtn
+                購入画面に進む
           .itemDetail 詳細情報
           %ul
             - if user_signed_in?

@@ -1,0 +1,57 @@
+
+.single-container
+  = render 'shared/header'
+
+  .single-main
+    .single-panel
+      .single-panel__sign-up
+        %h2 購入を確定しますか？
+
+      .purchase-box
+        .purchase-box__inner
+          .purchase-box__image
+            = image_tag @item.images.first.image_url
+          .purchase-box__name
+            = @item.name
+
+          .purchase-box__prices
+            %p
+              ￥ #{@item.price.to_s(:delimited)}
+            .no-point ポイントはありません
+            .purchase-box__price
+              .purchase-box__price__left 支払い金額
+              .purchase-box__price__right
+                %span
+                  ￥ #{@item.price.to_s(:delimited)}
+            = link_to "購入する", pay_item_cards_path(params: { price: @item.price.to_i}), class: "purchase-box__purchase-btn",method: :post
+      .purchase-box__user-info
+        .purchase-box__user-content
+          %h3.purchase-box__user-content__head 配送先
+          .purchase-box__user-content__address
+          = link_to "", class: "purchase-box__edit" do
+            %span 変更する
+            = fa_icon "chevron-right"
+
+      .purchase-box__user-info
+        .purchase-box__user-content
+          .purchase-box__user-content__head
+            %h3.purchase-box__user-content__head
+            .purchase-box__user-content__foot
+              - if @card_information
+                %span カード情報
+                .card_field
+                  = "**** **** ****" + @card_information.last4
+                %span 有効期限 月/年
+                .card_field
+                  = @card_information.exp_month.to_s + "/" + @card_information.exp_year.to_s.slice(2,3)
+            .purchase-box__user-content__address
+              クレジットカード
+            = form_tag action: :create, method: :post do
+              :plain
+                <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_83e5b72f0ee8f5f858101282" data-text="カード情報を入力する"></script>
+
+            / = link_to "", class: "purchase-box__edit" do
+            /   %span 登録する
+            /   = fa_icon "chevron-right"
+
+  = render 'shared/footer'
