@@ -2,8 +2,8 @@
   = link_to item_path(item.id) do
     %figure.productList--img
     .productList--body
+      = image_tag item.images.first.image.url
       %h3.name
-        = item.images.first.image
         = item.name
       .details
         %ul
