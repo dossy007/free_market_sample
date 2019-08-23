@@ -23,7 +23,7 @@ class CardsController < ApplicationController
 
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     if params['payjp-token'].blank?
-      redirect_to new_item_card_path,flash: {alert: "payjp-tokenが見つかりません"}
+      redirect_to new_item_card_path, alert: "payjp-tokenが見つかりません"
     else
       customer = Payjp::Customer.create(
       description: 'テスト',
@@ -51,7 +51,7 @@ class CardsController < ApplicationController
       if buy.save
         redirect_to root_path
       else
-        redirect_to new_item_card_path,flash: {alert: "#{buy.errors.full_messages}"}
+        redirect_to new_item_card_path, alert: "#{buy.errors.full_messages}"
       end
       rescue => e
         redirect_to new_item_card_path, alert: "購入に失敗しました"
@@ -66,9 +66,9 @@ class CardsController < ApplicationController
     #自分のものは買えない&不正防止&カード登録
     item = Item.find(params[:item_id])
     if item.price != params[:price].to_i || current_user.id == item.sell.first.user_id || item.buy.present?
-      redirect_to root_path,flash: {alert: "不正もしくは売り切れもしくは自分で買おうとしてまへんか??"}
+      redirect_to root_path, alert: "不正もしくは売り切れもしくは自分で買おうとしてまへんか??"
     elsif current_user.card.blank?
-      redirect_to new_item_card_path, flash: {alert: "カードを登録してください"}
+      redirect_to new_item_card_path, alert: "カードを登録してください"
     end
   end
 end

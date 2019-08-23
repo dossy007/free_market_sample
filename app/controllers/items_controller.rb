@@ -24,13 +24,13 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.save
       if item_params[:images_attributes] == nil
-        redirect_to new_item_path, flash: {alert: "image抜けとるんと違うか?"}
+        redirect_to new_item_path, alert: "image抜けとるんと違うか?"
       else
         sell = Sell.new(deal_params)
         if sell.save
           redirect_to root_path
         else
-          redirect_to new_item_path,flash: {notice: "#{sell.errors.full_messages}"}
+          redirect_to new_item_path, alert: "#{sell.errors.full_messages}"
         end
       end
       rescue => e
