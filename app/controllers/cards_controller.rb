@@ -32,13 +32,12 @@ class CardsController < ApplicationController
       metadata: {user_id: current_user.id}
       )
       #customer.newが使えないため
-      if (customer.cards.count == 0 || customer.default_card == nil)
-        redirect_to new_item_card_path,flash: {notice: "不正なtoken"}
-      else
         card = Card.create(user_id: current_user.id,customer_id: customer.id, card_id: customer.default_card)
         redirect_to new_item_card_path
+
       end
-    end
+      rescue => e
+      redirect_to new_item_card_path, alert: 'カードの作成に失敗しました'
   end
 
   def pay
