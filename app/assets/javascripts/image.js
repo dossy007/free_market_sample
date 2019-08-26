@@ -1,5 +1,9 @@
 
 $(document).on('turbolinks:load', function(){
+
+  //newの時のみ
+  if (window.location.href.match(/\/items\/new/)) {
+
   var dropzone = $('.form-area');
   var dropzone2 = $('.form-area2');
   var dropzone_box = $('.dropzone-box');
@@ -8,7 +12,10 @@ $(document).on('turbolinks:load', function(){
   var input_area = $('.form_area');
   var preview = $('#list');
   var preview2 = $('#list2');
+  var form = $(".img_view").length
 
+
+if (form < 3) {
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
     var file = $(this).prop('files')[0];
 
@@ -57,8 +64,8 @@ $(document).on('turbolinks:load', function(){
   });
 
 
-  $(document).on('click', '.delete', function() {
-    var target_image = $(this).parent().parent();
+  $(".btn_right").on('click','.for', function() {
+    var target_image = $(this).parent();
     $.each(inputs, function(index, input){
       if ($(this).data('image') == target_image.data('image')){
         $(this).remove();
