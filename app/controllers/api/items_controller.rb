@@ -19,6 +19,6 @@ class Api::ItemsController < ApplicationController
 
 	private
 	def update_params
-    params.require(:file)
+		params.require(:file)
 	end
 end
