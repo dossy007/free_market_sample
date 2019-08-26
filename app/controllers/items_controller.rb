@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,except: [:index]
+  before_action :get_category, only: [:edit]
 
   def index
     @items = Item.limit(8)
@@ -61,5 +62,16 @@ private
   end
   def middle_params
     params[:middle_id].to_i
+  end
+
+  def get_category
+    @item = Item.find(params[:id])
+    @imgs = @item.images
+    @lcate = Category.find(@item.category_id)
+    @mcate = Category.find(@lcate.id).parent
+    @topcate = Category.find(@mcate.id).parent
+    @topcategories = Category.all.order("id ASC").limit(13)
+    @mcategory = Category.find(@topcate.id).children
+    @lcategory = Category.find(@mcate.id).children
   end
 end
