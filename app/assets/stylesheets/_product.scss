@@ -140,7 +140,12 @@
                 display: flex;
                 width: 0px;
                 float:left;
-                // width: 135px;
+              }
+              #lists {
+                display: flex;
+                width: 0px;
+                float:left;
+                width: 100%;
               }
               .img_view {
                 position: relative;
