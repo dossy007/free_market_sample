@@ -112,7 +112,6 @@ if (form < 3) {
     if (item_length < 3) {
     $(document).on('change', 'input[type= "file"].upload-image',function(event) {
       var file = $(this).prop('files')[0];
-      console.log("動いてますよ")
       //input_fileの中身をキャンセルした場合
       if (file !== undefined) {
         var reader = new FileReader();
@@ -164,23 +163,18 @@ if (form < 3) {
 
   }
 
-
   // deletebtn
     $(document).on('click','.btn_right',function() {
-      var gr = $(this).parent()
-      var d_id = $(gr).data('item-id')
-      console.log(gr)
-      console.log(d_id)
-      var ac = $(".edit_item").attr('action')
-      gr.remove()
-      var num = ac.match(/\d/)
-      // console.log(num)
+      var parent_content = $(this).parent()
+      var data_id = $(parent_content).data('item-id')
+      var edit_action = $(".edit_item").attr('action')
+      parent_content.remove()
+      var num = edit_action.match(/\d/)
       item_length = parseInt(item_length)-1
-        console.log(item_length)
       $.ajax({
-        url: `/items/${num}/api/items/${d_id}`,
+        url: `/items/${num}/api/items/${data_id}`,
         type: 'DELETE',
-        data: {name: d_id
+        data: {name: data_id
         },
         dataType: 'json',
         contentType: false
