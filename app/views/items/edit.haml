@@ -14,11 +14,12 @@
               %p 最大3枚までアップロードできます
               %ul.formUploader
                 #lists
-                  - @imgs.each do |img|
-                    .img_view{"data-item-id": "#{img.id}"}
-                      = image_tag img.image.url,{class: "picture"}
-                      %p.btn_left 編集
-                      %p.btn_right 削除
+                  - if @imgs.present?
+                    - @imgs.each do |img|
+                      .img_view{"data-item-id": "#{img.id}"}
+                        = image_tag img.image.url,{class: "picture"}
+                        %p.btn_left 編集
+                        %p.btn_right 削除
                   = fields_for :image do |i|
                     %li.form-areas{style: "display:block"}
                       = i.label :image,{class: "dropzone-box",}
