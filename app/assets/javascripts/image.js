@@ -99,5 +99,63 @@ if (form < 3) {
       dropzone.find('i').replaceWith('<p>ココをクリックしてください</p>')
     }
   })
-});
+}
+  }
+  //newはここまで
+
+  //editはここから
+  if (window.location.href.match(/\/items\/\d+\/edit/)) {
+    var length = $(".img_view").length
+    var item_length = parseInt(length)
+    var inputs = [];
+    var images = [];
+    if (item_length < 3) {
+    $(document).on('change', 'input[type= "file"].upload-image',function(event) {
+      var file = $(this).prop('files')[0];
+      console.log("動いてますよ")
+      //input_fileの中身をキャンセルした場合
+      if (file !== undefined) {
+        var reader = new FileReader();
+        var form_class =$(this).parent()
+        var form_class_next =$(this).parent().next()
+        var formData = new FormData();
+        var type_file = $("input[type=file]").prop('files')[0];
+
+        formData.append('file',type_file)
+        var url = $(".edit_item").attr('action')
+        var num = url.match(/\d/)
+        var action_url = url + `/api/items/${num}`
+        var length = $(".img_view").length
+
+        if (length < 3) {
+          $.ajax({
+            url: action_url,
+            type: 'PATCH',
+            data: formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false
+          })
+
+          .done(function(image) {
+            var img = $(`<div class= "img_view" data-item-id="${image.id}"><img class="picture"></div>`);
+            reader.onload = function(e) {
+            var btn_wrapper = $('<p class="btn_left">編集</p><p class="btn_right">削除</p>');
+            img.append(btn_wrapper);
+            img.find('img').attr({
+              src: e.target.result
+            })
+            }
+            reader.readAsDataURL(file);
+            images.push(img);
+              if (item_length == 0) {
+                $(".form-areas").before(img);
+              }else{
+              $(".img_view:last").after(img);
+              }
+              item_length = parseInt(item_length)+1
+              })
+            .fail({
+            })
+        }
 
