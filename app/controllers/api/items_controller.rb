@@ -3,10 +3,10 @@ class Api::ItemsController < ApplicationController
     image = Image.where(item_id: params[:item_id].to_i)
     if image.length < 3
     @image = image.create(image: update_params, item_id: params[:item_id])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+      respond_to do |format|
+        format.html
+        format.json
+      end
     else
       render :edit
     end
