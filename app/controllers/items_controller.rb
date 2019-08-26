@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @imgs = @item.images
   end
 
   def update
@@ -75,8 +77,6 @@ private
   end
 
   def get_category
-    @item = Item.find(params[:id])
-    @imgs = @item.images
     @lcate = Category.find(@item.category_id)
     @mcate = Category.find(@lcate.id).parent
     @topcate = Category.find(@mcate.id).parent
