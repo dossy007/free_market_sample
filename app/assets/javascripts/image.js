@@ -159,3 +159,33 @@ if (form < 3) {
             })
         }
 
+      }
+    });
+
+  }
+
+
+  // deletebtn
+    $(document).on('click','.btn_right',function() {
+      var gr = $(this).parent()
+      var d_id = $(gr).data('item-id')
+      console.log(gr)
+      console.log(d_id)
+      var ac = $(".edit_item").attr('action')
+      gr.remove()
+      var num = ac.match(/\d/)
+      // console.log(num)
+      item_length = parseInt(item_length)-1
+        console.log(item_length)
+      $.ajax({
+        url: `/items/${num}/api/items/${d_id}`,
+        type: 'DELETE',
+        data: {name: d_id
+        },
+        dataType: 'json',
+        contentType: false
+      })
+    })
+
+    }//editはここまで
+});
