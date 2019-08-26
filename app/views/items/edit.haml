@@ -4,18 +4,25 @@
     .inner
       %h2.title 商品の情報を入力
       .productForm
-        = form_for @item do |f|
+        = form_for @item, url: item_path, mehod: :patch do |f|
           .formSection
             = f.hidden_field :user_id, value: current_user.id
             .productForm__field.productForm__field--top
               = f.label :出品画像
               %span.formRequired 必須
               %br/
-              %p 最大4枚までアップロードできます
+              %p 最大3枚までアップロードできます
               %ul.formUploader
-                .uploadInfo
-                  %p ドラッグアンドドロップ
-                  %span またはクリックしてアップロード
+                #lists
+                  - @imgs.each do |img|
+                    .img_view{"data-item-id": "#{img.id}"}
+                      = image_tag img.image.url,{class: "picture"}
+                      %p.btn_left 編集
+                      %p.btn_right 削除
+                  = fields_for :image do |i|
+                    %li.form-areas{style: "display:block"}
+                      = i.label :image,{class: "dropzone-box",}
+                      = i.file_field :image,class: "upload-image"
           .formSection
             .productForm__field
               = f.label :商品名
@@ -67,7 +74,7 @@
                 = f.label :発送元の地域
                 %span.formRequired 必須
                 %br/
-                = f.collection_select(:price, [], :id, :name, {prompt: "---"}, {class: "inputField inputField__select", required: true})
+                = f.collection_select :prefecture_id, Prefecture.all,:id, :name,{include_blank: "---"},class: "inputField inputField__select",required: true
               .productForm__field
                 = f.label :発送までの日数
                 %span.formRequired 必須
