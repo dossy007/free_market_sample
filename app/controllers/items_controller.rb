@@ -25,11 +25,11 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(update_params)
-    redirect_to root_path
-
-     rescue => e
-        redirect_to edit_item_path, alert: "編集に失敗しました"
+    if @item.update(update_params)
+      redirect_to root_path
+    else
+      redirect_to edit_item_path, alert: "編集に失敗しました"
+    end
   end
 
   def create
