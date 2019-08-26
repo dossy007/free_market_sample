@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,except: [:index]
   before_action :get_category, only: [:edit]
+  before_action :prepared_update, only: [:update]
 
   def index
     @items = Item.limit(8)
@@ -18,7 +19,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
     @item = Item.find(params[:id])
+    @item.update(update_params)
+    redirect_to root_path
   end
 
   def create
@@ -53,6 +59,10 @@ private
     params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id, images_attributes: [:image])
   end
 
+  def update_params
+    params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id)
+  end
+
   def deal_params
     {user_id: current_user.id,item_id: @item.id}
   end
@@ -73,5 +83,12 @@ private
     @topcategories = Category.all.order("id ASC").limit(13)
     @mcategory = Category.find(@topcate.id).children
     @lcategory = Category.find(@mcate.id).children
+  end
+
+  def prepared_update
+    image = Image.where(item_id: params[:id].to_i)
+    if image.length == 0
+      redirect_to edit_item_path
+    end
   end
 end
