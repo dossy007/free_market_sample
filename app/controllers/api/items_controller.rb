@@ -12,13 +12,13 @@ class Api::ItemsController < ApplicationController
     end
   end
 
-	def destroy
-		image = Image.find(params[:id].to_i)
-		image.destroy
-	end
+  def destroy
+    image = Image.find(params[:id].to_i)
+    image.destroy
+  end
 
-	private
-	def update_params
-	  params.require(:file)
-	end
+  private
+  def update_params
+    params.require(:file)
+  end
 end
