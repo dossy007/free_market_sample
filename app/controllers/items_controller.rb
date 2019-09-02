@@ -33,7 +33,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
     @item.save
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, alert: "image抜けとるんと違うか?"
@@ -80,6 +79,7 @@ private
   end
 
   def get_category
+    @item = Item.find(params[:id])
     @lcate = Category.find(@item.category_id)
     @mcate = Category.find(@lcate.id).parent
     @topcate = Category.find(@mcate.id).parent
