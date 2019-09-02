@@ -163,6 +163,17 @@ body {
       right: 210px;
     }
   }
+  .contents {
+    display: flex;
+    .leftContent {
+      width: 20%;
+    }
+    .rightContent {
+      width: 65%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
   .topIntroduction {
     padding: 40px 20px;
     .subtitle {

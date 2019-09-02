@@ -115,7 +115,11 @@
                 }
               }
               .form-area {
-                // height: 100px;
+                min-height: 184px;
+                display: block;
+              }
+               .form-areas {
+                width:100%;
                 min-height: 184px;
                 display: block;
               }
@@ -134,7 +138,12 @@
                 display: flex;
                 width: 0px;
                 float:left;
-                // width: 135px;
+              }
+              #lists {
+                display: flex;
+                width: 0px;
+                float:left;
+                width: 100%;
               }
               .img_view {
                 position: relative;
@@ -159,10 +168,8 @@
                 }
               }
               .btn_wrapper {
-                // height: 100px;
               }
               .btn {
-                // height: 20px;
               }
               .listGroupItem {
                 width: calc(( 100% - 2px) /  4);
@@ -572,6 +579,13 @@
             }
           }
         }
+      }
+    }
+    .link {
+      display: flex;
+      margin: 0 50px 0;
+      .content_link {
+        margin: 0 65px 0;
       }
     }
     .links {
