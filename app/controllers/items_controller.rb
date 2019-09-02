@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @item = Item.new
     @item.save
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, alert: "image抜けとるんと違うか?"
