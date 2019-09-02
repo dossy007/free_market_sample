@@ -5,7 +5,6 @@ class Item < ApplicationRecord
 	has_many :sell
 	has_many :buy
   accepts_nested_attributes_for :images, allow_destroy: true
-  validates :images, presence: true, on: :create
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
 end
