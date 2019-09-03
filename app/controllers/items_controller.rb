@@ -33,19 +33,23 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-      if item_params[:images_attributes] == nil
-        redirect_to new_item_path, alert: "image抜けとるんと違うか?"
-      else
-        sell = Sell.new(user_id: current_user.id,item_id: @item.id)
-        if sell.save
-          redirect_to root_path
-        else
-          redirect_to new_item_path, alert: "#{sell.errors.full_messages}"
-        end
-      end
-      rescue => e
-        redirect_to new_item_path, alert: "購入に失敗しました"
+    if @item.save?
+      redirect_to new_item_path, alert: "1"
+    else
+      redirect_to new_item_path, alert: "2"
+    end
+      # if item_params[:images_attributes] == nil
+      #   redirect_to new_item_path, alert: "image抜けとるんと違うか?"
+      # else
+      #   sell = Sell.new(deal_params)
+      #   if sell.save
+      #     redirect_to root_path
+      #   else
+      #     redirect_to new_item_path, alert: "#{sell.errors.full_messages}"
+      #   end
+      # end
+      # rescue => e
+      #   redirect_to new_item_path, alert: "購入に失敗しました"
   end
 
   # ajax用
