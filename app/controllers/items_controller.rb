@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, alert: "image抜けとるんと違うか?"
       else
-        @item = Item.create!(item_params)
+        @item = Item.save(item_params)
         sell = Sell.new(deal_params)
         if sell.save
           redirect_to root_path
@@ -43,8 +43,8 @@ class ItemsController < ApplicationController
           redirect_to new_item_path, alert: "#{sell.errors.full_messages}"
         end
       end
-      # rescue => e
-      #   redirect_to new_item_path, alert: "購入に失敗しました"
+      rescue => e
+        redirect_to new_item_path, alert: "購入に失敗しました"
   end
 
   # ajax用
