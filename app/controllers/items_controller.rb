@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, alert: "image抜けとるんと違うか?"
       else
-        @item = Item.create(item_params)
+        @item = Item.create!(item_params)
         sell = Sell.new(deal_params)
         if sell.save
           redirect_to root_path
