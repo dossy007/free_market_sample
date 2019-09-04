@@ -34,9 +34,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to new_item_path, alert: "1"
+      redirect_to new_item_path, alert: @item.save!
     else
-      redirect_to new_item_path, alert: "2"
+      redirect_to new_item_path, alert: @item.save!
     end
       # if item_params[:images_attributes] == nil
       #   redirect_to new_item_path, alert: "image抜けとるんと違うか?"
