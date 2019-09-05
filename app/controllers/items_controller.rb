@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
     @categories = Category.new
     @topcategories = Category.all.order("id ASC").limit(13)
   end
-
   def show
     @item = Item.find(params[:id])
   end
@@ -33,11 +32,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    @item.save
+      @item = Item.new(item_params)
       if item_params[:images_attributes] == nil
         redirect_to new_item_path, alert: "image抜けとるんと違うか?"
       else
+        @item.save
         sell = Sell.new(deal_params)
         if sell.save
           redirect_to root_path
@@ -69,7 +68,7 @@ private
   end
 
   def deal_params
-    {user_id: current_user.id,item_id: @item.id}
+    { user_id: current_user.id,item_id: @item.id}
   end
 
   def value_params
