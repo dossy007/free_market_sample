@@ -54,7 +54,8 @@ set :default_env, {
   FACEBOOK_APP_SECRET: ENV['FACEBOOK_APP_SECRET']
 }
 
-set :linked_files, fetch(:linked_files, []).push("config/master.key")}
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
+
 
 # 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
 
