@@ -88,3 +88,4 @@ gem "font-awesome-rails"
 gem 'closure_tree'
 gem 'payjp'
 gem "nokogiri", ">= 1.10.4"
+gem 'fog-aws'
