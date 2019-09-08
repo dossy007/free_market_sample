@@ -44,8 +44,19 @@ class ItemsController < ApplicationController
           redirect_to new_item_path, alert: "#{sell.errors.full_messages}"
         end
       end
-      # rescue => e
-        # redirect_to new_item_path, alert: "購入に失敗しました"
+      rescue => e
+        redirect_to new_item_path, alert: "購入に失敗しました"
+  end
+
+  def destroy
+    item = Item.find(delete_params)
+    image = Image.where(item_id: delete_params)
+    image.destroy_all
+    if item.destroy
+      redirect_to root_path,alert: "削除に成功しました"
+    end
+    rescue => e
+      redirect_to item_path, alert: "削除に失敗しました"
   end
 
   # ajax用
@@ -93,5 +104,9 @@ private
     if image.length == 0
       redirect_to edit_item_path
     end
+  end
+
+  def delete_params
+    params[:id].to_i
   end
 end
