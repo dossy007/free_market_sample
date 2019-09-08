@@ -84,7 +84,7 @@
             %div.content_link
               = link_to "商品編集",edit_item_path
             %div.content_link
-              = link_to "商品削除","#"
+              = link_to "商品削除",item_path,method: :delete,onclick: 'return confirm("削除してよろしいですか?")'
             %div.content_link
               = link_to "出品停止","#"
         %ul.links
