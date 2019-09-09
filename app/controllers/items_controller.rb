@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
         end
       end
       rescue => e
-        redirect_to new_item_path, alert: "購入に失敗しました"
+        redirect_to new_item_path, alert: "作成に失敗しました"
   end
 
   def destroy
