@@ -1,8 +1,8 @@
 .productList
   = link_to item_path(item.id) do
     %figure.productList--img
-    .productList--body
       = image_tag item.images.first.image.url
+    .productList--body
       %h3.name
         = item.name
       .details
