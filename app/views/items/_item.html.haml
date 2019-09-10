@@ -1,7 +1,7 @@
 .sellList
   = link_to item_path(item.id) do
     %figure.productList--img
-      = image_tag item.images.first.image.url
+      = image_tag item.images.first.image.url,width: "187",height: "80"
     .productList--body
       %h3.name
         = item.name
