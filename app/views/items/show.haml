@@ -26,35 +26,40 @@
                   %tbody
                     %tr
                       %th 出品者
-                      %td だれ誰
+                      %td
+                        = @item.sell.user.nickname
                     %tr
                       %th カテゴリー
                       %td
-                        = link_to "メインカテゴリー", ""
+                        = link_to @topcate.name
                         %br
-                        = link_to "サブカテゴリー", ""
+                        = link_to @mcate.name
                         %br
-                        = link_to "アイテム", ""
+                        = link_to @lcate.name
                     %tr
                       %th ブランド
                       %td
-                        = link_to "ブランド名", "#"
+                        = link_to @item.brand
                     %tr
                       %th 商品のサイズ
-                      %td これくらい
+                      %td
+                        = @item.size
                     %tr
                       %th 商品の状態
-                      %td こんなもん
+                      %td
+                        = @item.shopping_status_i18n
                     %tr
                       %th 配送料の負担
-                      %td 100円
+                      %td
+                        = @item.send_burden_i18n
                     %tr
                       %th 発送元の地域
                       %td
-                        = link_to "青森", ""
+                        = link_to @item.prefecture.name
                     %tr
                       %th 発送日の目安
-                      %td 3日
+                      %td
+                        = @item.delivery_date_i18n
           .itemBox__price
             %span
             = @item.price
@@ -79,7 +84,7 @@
             %li.optionalBtn
               = link_to "#" do
                 = fa_icon "lock", text: "あんしん・あんぜんへの取り組み"
-        -  if current_user.id == @item.sell[0].user_id
+        -  if current_user == @item.sell.user_id
           %ol.link
             %div.content_link
               = link_to "商品編集",edit_item_path
@@ -103,4 +108,4 @@
 = render "shared/banner"
 = render "shared/footer"
 = render "shared/purchaseBtn"
-  - if current_user.id == @item.sell[0].user_id?
+  - if current_user == @item.sell.user_id?

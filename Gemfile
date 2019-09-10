@@ -89,3 +89,4 @@ gem 'closure_tree'
 gem 'payjp'
 gem "nokogiri", ">= 1.10.4"
 gem 'fog-aws'
+gem 'enum_help'

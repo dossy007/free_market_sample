@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,except: [:index]
-  before_action :get_category, only: [:edit]
+  before_action :get_category, only: [:edit,:show]
   before_action :prepared_update, only: [:update]
 
   def index
@@ -13,12 +13,11 @@ class ItemsController < ApplicationController
     @categories = Category.new
     @topcategories = Category.all.order("id ASC").limit(13)
   end
+
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
     @imgs = @item.images
   end
 
@@ -45,7 +44,7 @@ class ItemsController < ApplicationController
         end
       end
       rescue => e
-        redirect_to new_item_path, alert: "購入に失敗しました"
+        redirect_to new_item_path, alert: "作成に失敗しました"
   end
 
   def destroy
