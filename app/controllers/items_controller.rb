@@ -50,8 +50,8 @@ class ItemsController < ApplicationController
   def destroy
     item = Item.find(delete_params)
     image = Image.where(item_id: delete_params)
-    image.destroy_all
-    if item.destroy
+    sell = Sell.where(item_id: delete_params)
+    if image.destroy_all && sell.destroy_all && item.destroy
       redirect_to root_path,alert: "削除に成功しました"
     end
     rescue => e
