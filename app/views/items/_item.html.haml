@@ -11,5 +11,4 @@
           = item.price
           円(税込)
           %li
-            = fa_icon "heart", class: "likeIcon", text: item.text
-        %p (税込)
+            = fa_icon "heart", class: "likeIcon", text: truncate(item.text, length: 35)
