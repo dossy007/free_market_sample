@@ -65,7 +65,7 @@ class CardsController < ApplicationController
   def redirect_flash
     #自分のものは買えない&不正防止&カード登録
     item = Item.find(params[:item_id])
-    if item.price != params[:price].to_i || current_user.id == item.sell.first.user_id || item.buy.present?
+    if item.price != params[:price].to_i || current_user.id == item.sell.user_id || item.buy.present?
       redirect_to root_path, alert: "不正もしくは売り切れもしくは自分で買おうとしてまへんか??"
     elsif current_user.card.blank?
       redirect_to new_item_card_path, alert: "カードを登録してください"
