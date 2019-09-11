@@ -1,15 +1,12 @@
 .productList
   = link_to item_path(item.id) do
     %figure.productList--img
+      = image_tag item.images.first.image.url,width: "187",height: "200"
     .productList--body
-      = image_tag item.images.first.image.url
       %h3.name
         = item.name
       .details
         %ul
           %li
-          = item.price
-          円
-          %li
-            = fa_icon "heart", class: "likeIcon", text: item.text
-        %p (税込)
+            = item.price
+            円(税込)

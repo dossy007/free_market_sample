@@ -326,6 +326,13 @@
       a {
         background-color: $white;
         display: inline-block;
+        .productList--body {
+          .details {
+            ul {
+              float: left;
+            }
+          }
+        }
       }
     }
   }
