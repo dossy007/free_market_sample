@@ -1,6 +1,7 @@
 = render "shared/header"
-
+- breadcrumb :items,@item
 .main
+  = breadcrumbs class: "breadcrumbs-list"
   .showMain
     .contentLeft
       = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8" do
