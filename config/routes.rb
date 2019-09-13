@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   	collection do
   		get 'search'
   	end
+    member do
+      get 'category'
+    end
     namespace :api do
       resources :items,only: [:update,:destroy], defaults: {format: 'json'}
     end
