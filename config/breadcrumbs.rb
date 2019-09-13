@@ -8,10 +8,11 @@ crumb :users do
 	parent :root
 end
 
-crumb :items do |item|
+crumb :items do
 	link "商品詳細",item_path
 	parent :root
 end
+
 # crumb :project do |project|
 #   link project.name, project_path(project)
 #   parent :projects
