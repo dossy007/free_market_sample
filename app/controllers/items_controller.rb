@@ -67,6 +67,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def category
+    @category = Item.where(category_id: params[:id])
+  end
+
 
 private
   def item_params
