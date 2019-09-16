@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!,except: [:index]
   before_action :get_category, only: [:edit,:show]
   before_action :prepared_update, only: [:update]
-
+  before_action :set_category,only: [:category]
   def index
     @items = Item.limit(8)
   end
@@ -67,6 +67,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def category
+    case params[:categorize_id].to_i
+    when 1 then
+      @category_id = parent_category
+    when 2 then
+      @category_id = middle_category
+    when 3 then
+      @category_id = params[:id]
+    end
+
+    @items = Item.where(category_id: @category_id)
+  end
 
 private
   def item_params
@@ -96,6 +108,26 @@ private
     @topcategories = Category.all.order("id ASC").limit(13)
     @mcategory = Category.find(@topcate.id).children
     @lcategory = Category.find(@mcate.id).children
+  end
+
+  def parent_category
+    @category_id = []
+    @categories = Category.where(parent_id: params[:id])
+    @categories.ids.each do |cate|
+      Category.find(cate).children.ids.each do |e|
+        @category_id << e
+      end
+    end
+    return @category_id
+  end
+
+  def middle_category
+    catego = Category.where(parent_id: params[:id])
+    return catego.ids
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 
   def prepared_update

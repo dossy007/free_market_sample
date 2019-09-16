@@ -1,0 +1,10 @@
+= render "shared/header"
+%section.pickupContainer
+  %h2.head ピックアップカテゴリー
+  .productBox
+    .productHead
+      = link_to "#" do
+        %h3.title "#{@category.name}"
+    .productLists{id: "slickLists--1"}
+      = render partial: "item", collection: @items
+= render "shared/footer"
