@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
       @category_id = params[:id]
     end
 
-    @item = Item.where(category_id: @category_id)
+    @items = Item.where(category_id: @category_id)
   end
 
 private
