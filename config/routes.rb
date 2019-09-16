@@ -8,13 +8,9 @@ Rails.application.routes.draw do
   	collection do
   		get 'search'
   	end
-    member do
-      get 'category'
-    end
     namespace :api do
       resources :items,only: [:update,:destroy], defaults: {format: 'json'}
     end
-
   	resources :images
     resources :cards do
       collection do
@@ -23,6 +19,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :category, only: [:index] do
+    member do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
+  end
   resources :users do
     collection do
       get 'sell_item'
