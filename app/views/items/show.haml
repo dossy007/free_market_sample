@@ -31,11 +31,11 @@
                     %tr
                       %th カテゴリー
                       %td
-                        = link_to @topcate.name,category_item_path(@lcate)
+                        = link_to @topcate.name,category_item_path(@topcate,params: {categorize_id: 1})
                         %br
-                        = link_to @mcate.name
+                        = link_to @mcate.name,category_item_path(@mcate,params: {categorize_id: 2})
                         %br
-                        = link_to @lcate.name
+                        = link_to @lcate.name,category_item_path(@lcate,params: {categorize_id: 3})
                     %tr
                       %th ブランド
                       %td
