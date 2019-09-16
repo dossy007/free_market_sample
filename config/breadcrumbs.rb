@@ -8,11 +8,25 @@ crumb :users do
 	parent :root
 end
 
-crumb :items do
-	link "商品詳細",item_path
+crumb :parent_category do |category|
+	# @category = params[:id]
+	# cate_name = Category.find(@category)
+	link category.name,parent_category_path(category)
 	parent :root
 end
 
+# crumb
+
+# crumb :parents do |category|
+# 	# binding.pry
+# 	# link "#{category}", category_item_path(category)
+# 	link "",category_item_path
+# 	parent :items
+# end
+# crumb :middle do |m|
+# 	link ""
+# 	parent :parents
+# 	end
 # crumb :project do |project|
 #   link project.name, project_path(project)
 #   parent :projects
