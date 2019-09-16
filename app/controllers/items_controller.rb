@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!,except: [:index]
   before_action :get_category, only: [:edit,:show]
   before_action :prepared_update, only: [:update]
-
+  before_action :set_category,only: [:category]
   def index
     @items = Item.limit(8)
   end
@@ -68,7 +68,6 @@ class ItemsController < ApplicationController
   end
 
   def category
-    @category = Category.find(params[:id])
     case params[:categorize_id].to_i
     when 1 then
       @category_id = parent_category
@@ -127,8 +126,8 @@ private
     return catego.ids
   end
 
-  def ancestory_category
-    @category = Category.find(params[:id]) #3
+  def set_category
+    @category = Category.find(params[:id])
   end
 
   def prepared_update
