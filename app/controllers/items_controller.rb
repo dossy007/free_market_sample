@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   end
 
   def search_item
-    @items = Item.where('name LIKE ?',"%#{params[:keyword]}%")
+    @items = Item.where('name LIKE ? OR text LIKE ?',"%#{params[:keyword]}%","%#{params[:keyword]}%")
   end
 
   def category
