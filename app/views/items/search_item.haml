@@ -1,0 +1,20 @@
+= render "shared/header"
+%nav.breadCrumbs
+  %ul
+    %li
+      = link_to "メルカリ", root_path
+    %li
+      = fa_icon "angle-right"
+    %li
+      %p マイページ
+.main
+  .contents
+    = render "users/leftcontent"
+    .pickupContainer
+      %h3{class: "head"}
+        = "#{params[:keyword]}の検索結果"
+      %h3{class: "title"}
+        = "#{@items.count}件表示"
+      .productBox
+        .productLists{id: "slickLists--1"}
+          = render partial: "item", collection: @items
