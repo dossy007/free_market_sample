@@ -69,6 +69,8 @@ class ItemsController < ApplicationController
 
   def search_item
     @items = Item.where('name LIKE ? OR text LIKE ?',"%#{params[:keyword]}%","%#{params[:keyword]}%")
+    @topcategories = Category.all.order("id ASC").limit(13)
+
   end
 
   def category
