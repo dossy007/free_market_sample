@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :items do
   	collection do
   		get 'search'
+      get 'search_item'
   	end
     member do
       get 'category'
