@@ -1,15 +1,15 @@
 .leftContent
-  = form_with do |f|
+  = form_with url: search_item_items_path,method: :get do |f|
     .topcontent
       = "ここに並び替えのformをおく実装はしないと思うよ"
-    .bottomcontent
+    .formSection
       = "ここから絞り込みのselectを置いていく"
       .productForm__field.productForm__field--category
         = f.label :category_id do
           カテゴリー
-          %span.formRequired 必須
+          %span.formRequired
           %br/
-          = f.collection_select :category_id, @topcategories,:id,:name,{include_blank: "---"},class: "inputField inputField__select",id: "item_category_id",required: true
+          = f.collection_select :category_id, @topcategories,:id,:name,{include_blank: "---"},class: "inputField inputField__select"
           #category
     / %ul
     /   %li
