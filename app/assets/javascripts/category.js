@@ -78,11 +78,10 @@
       var option_id = "s_category"
     }
     var html =
-    `<select name="item[category_id]" class="inputField inputField__select" id=${option_id}>
+    `<select name="q[category_id_cont]" class="inputField inputField__select" id=${option_id}>
         <option value>---</option>
      </select>`
      cat_id.append(html)
-      console.log(cat_id)
     }
 
   function appendC(category, num) {
@@ -101,10 +100,11 @@
 
 
 
-$("#category_id").on("change",function() {
+$("#q_category_id_cont").on("change",function() {
     var value_id = $(this).val()
     $("#m_category").remove()
     $("#s_category").remove()
+    console.log(22)
     // value_idが空ではない時にajazを使用
     if(value_id !== ""){
       $.ajax({
