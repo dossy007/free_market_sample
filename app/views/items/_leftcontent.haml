@@ -1,0 +1,22 @@
+.leftContent
+  = form_with do |f|
+    .topcontent
+      = "ここに並び替えのformをおく実装はしないと思うよ"
+    .bottomcontent
+      = "ここから絞り込みのselectを置いていく"
+      .productForm__field.productForm__field--category
+        = f.label :category_id do
+          カテゴリー
+          %span.formRequired 必須
+          %br/
+          = f.collection_select :category_id, @topcategories,:id,:name,{include_blank: "---"},class: "inputField inputField__select",id: "item_category_id",required: true
+          #category
+    / %ul
+    /   %li
+    /     = link_to user_path(current_user) do
+    /       %span マイページ
+    /       = fa_icon "angle-right"
+    /   %li
+    /     = link_to destroy_user_session_path, method: :delete do
+    /       %span ログアウト
+    /       = fa_icon "angle-right"
