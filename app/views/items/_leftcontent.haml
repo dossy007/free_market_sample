@@ -9,17 +9,17 @@
           カテゴリー
           %span.formRequired
           %br/
-          = f.collection_select :category_id, @topcategories,:id,:name,{include_blank: "---"},class: "inputField inputField__select"
+          = f.collection_select :category_id_cont, @topcategories,:id,:name,{include_blank: "---"},class: "inputField inputField__select"
           #category
       .productForm__field
         = f.label :商品の状態
         %span.formRequired
         %br/
-        = f.select(:shopping_status, [["新品/未使用", :unused], ["未使用に近い", :near_used], ["目立った傷や汚れなし", :no_dirt], ["やや傷や汚れあり", :some_dirt], ["傷や汚れあり", :dirt], ["状態が悪い", :bad_condition]], {prompt: "---"}, {class: "inputField inputField__select"})
+        = f.select(:shopping_status_eq, [["新品/未使用", 0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["状態が悪い", 5]], {prompt: "---"}, {class: "inputField inputField__select"})
         .productForm__field
           = f.label :配送料の負担
           %span.formRequired
           %br/
-          = f.select(:send_burden, [["送料込み（出品者負担）", :postage_included], ["着払い（購入者負担）", :cash_on_delivery]], {prompt: "---"}, {class: "inputField inputField__select"})
+          = f.select(:send_burden, [["送料込み（出品者負担）", 0], ["着払い（購入者負担）", 1]], {prompt: "---"}, {class: "inputField inputField__select"})
         .productForm__actions
           = f.submit "完了", class: "productBtn"
