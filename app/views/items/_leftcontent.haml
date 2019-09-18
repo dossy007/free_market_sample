@@ -1,5 +1,5 @@
 .leftContent
-  = form_with url: search_item_items_path,method: :get do |f|
+  = search_form_for @q, url: search_item_items_path,method: :get do |f|
     .topcontent
       = "ここに並び替えのformをおく実装はしないと思うよ"
     .formSection
