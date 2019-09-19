@@ -72,16 +72,21 @@
   var cat_id = $("#category")
 
     function appendOp(num) {
-    if (num === 1){
+     if (num === 1){
       var option_id = "m_category"
-    }else if (num === 2) {
-      var option_id = "s_category"
-    }
-    var html =
-    `<select name="q[category_id_cont]" class="inputField inputField__select" id=${option_id}>
+      var html =
+    `<select name="q[mcategory_id]" class="inputField inputField__select" id=${option_id}>
         <option value>---</option>
      </select>`
      cat_id.append(html)
+    }else if (num === 2) {
+      var option_id = "s_category"
+    var html =
+    `<select name="q[scategory_id]" class="inputField inputField__select" id=${option_id}>
+        <option value>---</option>
+     </select>`
+     cat_id.append(html)
+    }
     }
 
   function appendC(category, num) {
@@ -100,7 +105,7 @@
 
 
 
-$("#q_category_id_cont").on("change",function() {
+$("#q_category_id_matches_any").on("change",function() {
     var value_id = $(this).val()
     $("#m_category").remove()
     $("#s_category").remove()
