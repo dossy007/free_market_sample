@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :get_category, only: [:edit,:show]
   before_action :prepared_update, only: [:update]
   before_action :set_category,only: [:category]
+  before_action :set_search,only: [:seeking]
   def index
     @items = Item.limit(8)
   end
@@ -68,9 +69,17 @@ class ItemsController < ApplicationController
   end
 
   def search_item
+    @q = Item.ransack(params[:q])
     @items = Item.where('name LIKE ? OR text LIKE ?',"%#{params[:keyword]}%","%#{params[:keyword]}%")
+    # binding.pry
     @topcategories = Category.all.order("id ASC").limit(13)
+  end
 
+  def seeking
+    @items = @q.result
+    # binding.pry
+    @topcategories = Category.all.order("id ASC").limit(13)
+    render "search_item"
   end
 
   def category
@@ -87,9 +96,59 @@ class ItemsController < ApplicationController
   end
 
 private
+
+  def set_search #検索用
+    #ここでparams[:q][:category_id_matches_any]の中身を帰る配列にする
+    o = params[:q][:category_id_matches_any]
+    m = params[:q][:mcategory_id]
+    g = params[:q][:scategory_id]
+    # num = Category.find(o).parent
+    # binding.pry
+    if o.length != 0 # trueならoに値が入っている状態
+    # binding.pry
+      # oがある時
+      if g == nil || g == "" #grandchildを探す
+        #true gがない時
+        # binding.pry
+        # binding.pry
+        #false ない時mを探す
+        if m.length != 0
+          #mがある時
+          o = Category.find(m).children.ids
+        else
+          #mがない時 ""の時
+          o = find_child_grand(o)
+          # binding.pry
+        end
+      else
+       o = g
+      end
+      # if Category.where(o).parent != nil
+      #   #false
+      #   o = find_child_grand(o)
+      # else
+      #   #true
+      #   if Category.find(o).children != nil
+      #     #false子
+      #     # 子を全取得
+      #     o = Category.find(o).children.ids
+      #     # else
+      #       #true孫
+      #       # 何もしない
+      #   end
+      # end
+    # binding.pry
+    # false.categoryが何も選択されていない時は処理を飛ばす.何もしない
+    end
+    # binding.pry
+    params[:q][:category_id_matches_any] = o
+    @q = Item.ransack(params[:q])
+  end
+
   def item_params
     params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id, images_attributes: [:image])
   end
+
 
   def update_params
     params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id)
@@ -119,6 +178,17 @@ private
   def parent_category
     @category_id = []
     @categories = Category.where(parent_id: params[:id])
+    @categories.ids.each do |cate|
+      Category.find(cate).children.ids.each do |e|
+        @category_id << e
+      end
+    end
+    return @category_id
+  end
+
+  def find_child_grand(num) #parentがnilのとき
+    @category_id = []
+    @categories = Category.where(parent_id: num)
     @categories.ids.each do |cate|
       Category.find(cate).children.ids.each do |e|
         @category_id << e
