@@ -20,6 +20,6 @@
           = f.label :配送料の負担
           %span.formRequired
           %br/
-          = f.select(:send_burden, [["送料込み（出品者負担）", 0], ["着払い（購入者負担）", 1]], {include_blank: "全て"}, {class: "inputField inputField__select"})
+          = f.select(:send_burden_eq, [["送料込み（出品者負担）", 0], ["着払い（購入者負担）", 1]], {include_blank: "全て"}, {class: "inputField inputField__select"})
         .productForm__actions
           = f.submit "完了", class: "productBtn"
