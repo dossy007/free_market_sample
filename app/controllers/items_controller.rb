@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
   before_action :get_category, only: [:edit,:show]
   before_action :prepared_update, only: [:update]
   before_action :set_category,only: [:category]
-  before_action :set_search,only: [:seeking]
+  before_action :set_search,only: [:seek_item]
+
   def index
     @items = Item.limit(8)
   end
@@ -75,7 +76,7 @@ class ItemsController < ApplicationController
     @topcategories = Category.all.order("id ASC").limit(13)
   end
 
-  def seeking
+  def seek_item
     @items = @q.result
     # binding.pry
     @topcategories = Category.all.order("id ASC").limit(13)
