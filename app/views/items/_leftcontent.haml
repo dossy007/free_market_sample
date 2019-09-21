@@ -1,7 +1,6 @@
 .leftContent
   = search_form_for @q,url: seek_item_items_path,method: :get do |f|
     .formSection
-      = "ここから絞り込みのselectを置いていく"
       .productForm__field.productForm__field--category
         = f.label :category_id do
           カテゴリー
