@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   	collection do
   		get 'search'
       get 'search_item'
-      get 'seeking'
+      get 'seek_item'
   	end
     member do
       get 'category'
