@@ -1,7 +1,5 @@
 .leftContent
-  = search_form_for @q,url: seeking_items_path,method: :get do |f|
-    .topcontent
-      = "ここに並び替えのformをおく実装はしないと思うよ"
+  = search_form_for @q,url: seek_item_items_path,method: :get do |f|
     .formSection
       = "ここから絞り込みのselectを置いていく"
       .productForm__field.productForm__field--category
