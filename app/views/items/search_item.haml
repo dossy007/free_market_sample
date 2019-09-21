@@ -12,7 +12,7 @@
     = render "leftcontent"
     .pickupContainer
       %h3{class: "head"}
-        = "#{params[:keyword]}の検索結果"
+        = "#{params[:keyword].present? ? "#{params[:keyword]}の検索結果" : "検索結果"}"
       %h3{class: "title"}
         = "#{@items.count}件表示"
       .productBox
