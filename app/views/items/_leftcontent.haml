@@ -19,15 +19,15 @@
           %br/
           = f.select(:send_burden_eq, [["送料込み（出品者負担）", 0], ["着払い（購入者負担）", 1]], {include_blank: "全て"}, {class: "inputField inputField__select"})
         .productForm__field
-          %label{:for => "価格"}
+          %label{for: "価格"}
           %span.formRequired
           %br/
           %select#q_price.inputField.inputField__select
-            %option{:value => ""} 全て
-            %option{:value => "300-1000"} 300~1000
-            %option{:value => "1000-5000"} 1000~5000
-            %option{:value => "5000-10000"} 5000~10000
-            %option{:value => "10000-50000"} 10000~50000
+            %option{value: ""} 全て
+            %option{value: "300-1000"} 300~1000
+            %option{value: "1000-5000"} 1000~5000
+            %option{value: "5000-10000"} 5000~10000
+            %option{value: "10000-50000"} 10000~50000
 
           .ransackprice
             =f.number_field :price_gteq,{class: "w-ad",id: "q_price_gteq"}
