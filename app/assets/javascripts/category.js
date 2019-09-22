@@ -109,7 +109,6 @@ $("#q_category_id_matches_any").on("change",function() {
     var value_id = $(this).val()
     $("#m_category").remove()
     $("#s_category").remove()
-    console.log(22)
     // value_idが空ではない時にajazを使用
     if(value_id !== ""){
       $.ajax({
