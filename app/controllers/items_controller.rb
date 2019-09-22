@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :prepared_update, only: [:update]
   before_action :set_category,only: [:category]
   before_action :set_search,only: [:seek_item]
+  before_action :item_keyword,only: [:search_item,:seek_item]
 
   def index
     @items = Item.limit(8)
@@ -188,5 +189,9 @@ private
 
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def item_keyword
+    @keyword = params[:keyword]
   end
 end
