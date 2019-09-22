@@ -1,0 +1,37 @@
+.leftContent
+  = search_form_for @q,url: seek_item_items_path,method: :get do |f|
+    .formSection
+      .productForm__field.productForm__field--category
+        = f.label :category_id do
+          カテゴリー
+          %span.formRequired
+          %br/
+          = f.collection_select :category_id_matches_any, @topcategories,:id,:name,{include_blank: "全て"},class: "inputField inputField__select"
+          #category
+      .productForm__field
+        = f.label :商品の状態
+        %span.formRequired
+        %br/
+        = f.select(:shopping_status_eq, [["新品/未使用", 0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["状態が悪い", 5]], {include_blank: "全て"}, {class: "inputField inputField__select"})
+        .productForm__field
+          = f.label :配送料の負担
+          %span.formRequired
+          %br/
+          = f.select(:send_burden_eq, [["送料込み（出品者負担）", 0], ["着払い（購入者負担）", 1]], {include_blank: "全て"}, {class: "inputField inputField__select"})
+        .productForm__field
+          %label{for: "価格"}
+          %span.formRequired
+          %br/
+          %select#q_price.inputField.inputField__select
+            %option{value: ""} 全て
+            %option{value: "300-1000"} 300~1000
+            %option{value: "1000-5000"} 1000~5000
+            %option{value: "5000-10000"} 5000~10000
+            %option{value: "10000-50000"} 10000~50000
+
+          .ransackprice
+            =f.number_field :price_gteq,{class: "w-ad",id: "q_price_gteq"}
+            %span ~
+            =f.number_field :price_lteq,{class: "w-ad",id: "q_price_lteq"}
+        .productForm__actions
+          = f.submit "完了", class: "productBtn"

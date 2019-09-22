@@ -167,6 +167,12 @@ body {
     display: flex;
     .leftContent {
       width: 20%;
+      .topcontent {
+        height: 50px;
+      }
+      .bottomcontent {
+        margin-top: 20%;
+      }
     }
     .rightContent {
       width: 65%;

@@ -5,14 +5,12 @@
       = link_to "メルカリ", root_path
     %li
       = fa_icon "angle-right"
-    %li
-      %p マイページ
 .main
   .contents
-    = render "users/leftcontent"
+    = render "leftcontent"
     .pickupContainer
       %h3{class: "head"}
-        = "#{params[:keyword]}の検索結果"
+        = "#{@keyword.present? ? "#{@keyword}の検索結果" : "検索結果"}"
       %h3{class: "title"}
         = "#{@items.count}件表示"
       .productBox

@@ -3,6 +3,9 @@ class ItemsController < ApplicationController
   before_action :get_category, only: [:edit,:show]
   before_action :prepared_update, only: [:update]
   before_action :set_category,only: [:category]
+  before_action :set_search,only: [:seek_item]
+  before_action :item_keyword,only: [:search_item,:seek_item]
+
   def index
     @items = Item.limit(8)
   end
@@ -68,7 +71,15 @@ class ItemsController < ApplicationController
   end
 
   def search_item
+    @q = Item.ransack(params[:q])
     @items = Item.where('name LIKE ? OR text LIKE ?',"%#{params[:keyword]}%","%#{params[:keyword]}%")
+    @topcategories = Category.all.order("id ASC").limit(13)
+  end
+
+  def seek_item #ransack検索
+    @items = @q.result
+    @topcategories = Category.all.order("id ASC").limit(13)
+    render "search_item"
   end
 
   def category
@@ -85,9 +96,12 @@ class ItemsController < ApplicationController
   end
 
 private
+
+
   def item_params
     params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id, images_attributes: [:image])
   end
+
 
   def update_params
     params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id)
@@ -95,6 +109,17 @@ private
 
   def deal_params
     { user_id: current_user.id,item_id: @item.id}
+  end
+
+  def delete_params
+    params[:id].to_i
+  end
+
+  def prepared_update
+    image = Image.where(item_id: params[:id].to_i)
+    if image.length == 0
+      redirect_to edit_item_path
+    end
   end
 
   def value_params
@@ -125,6 +150,38 @@ private
     return @category_id
   end
 
+  def set_search
+    base = params[:q][:category_id_matches_any]
+    m = params[:q][:mcategory_id]
+    g = params[:q][:scategory_id]
+    if base.length != 0
+      if g == nil || g == "" #grandchildを探す
+        if m.length != 0
+          #mがある時
+          base = Category.find(m).children.ids
+        else
+          #mがない時
+          base = find_child_grand(base)
+        end
+      else
+        base = g
+      end
+    end
+    params[:q][:category_id_matches_any] = base
+    @q = Item.ransack(params[:q])
+  end
+
+  def find_child_grand(num)
+    @category_id = []
+    @categories = Category.where(parent_id: num)
+    @categories.ids.each do |cate|
+      Category.find(cate).children.ids.each do |e|
+        @category_id << e
+      end
+    end
+    return @category_id
+  end
+
   def middle_category
     catego = Category.where(parent_id: params[:id])
     return catego.ids
@@ -134,14 +191,7 @@ private
     @category = Category.find(params[:id])
   end
 
-  def prepared_update
-    image = Image.where(item_id: params[:id].to_i)
-    if image.length == 0
-      redirect_to edit_item_path
-    end
-  end
-
-  def delete_params
-    params[:id].to_i
+  def item_keyword
+    @keyword = params[:keyword]
   end
 end
