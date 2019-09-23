@@ -1,6 +1,5 @@
 class CategoryController < ApplicationController
-	def index
+  def index
     @topcategories = Category.all.order("id ASC").limit(13)
-	end
-
+  end
 end
