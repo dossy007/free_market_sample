@@ -8,7 +8,7 @@
       = link_to "#" do
         %h3.title カテゴリ一覧
     .productLists{id: "slickLists--1"}
-      - @topcategories.each do |c|
+      - @topcategories.each do |category|
         = link_to category_item_path(category) do
           %h4.title
             = category.name
