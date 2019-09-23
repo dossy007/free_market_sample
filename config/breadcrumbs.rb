@@ -4,18 +4,24 @@ crumb :root do
 end
 
 crumb :users do
-	link "userpage", users_path
+	link "mypage", users_path
 	parent :root
 end
 
-crumb :parent_category do |category|
-	# @category = params[:id]
-	# cate_name = Category.find(@category)
-	link category.name,parent_category_path(category)
+crumb :show do
+	link "商品詳細", item_path
 	parent :root
 end
 
-# crumb
+crumb :all_category do
+  link "カテゴリ一覧",category_index_path
+  parent :root
+end
+
+crumb :category do |category|
+	link "#{category}",category_item_path
+	parent :all_category
+end
 
 # crumb :parents do |category|
 # 	# binding.pry
