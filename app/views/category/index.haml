@@ -1,0 +1,15 @@
+= render "shared/header.haml"
+- breadcrumb :all_category
+= breadcrumbs class: "breadcrumbs-list"
+%section.pickupContainer
+  %h2.head
+  .productBox
+    .productHead
+      = link_to "#" do
+        %h3.title カテゴリ一覧
+    .productLists{id: "slickLists--1"}
+      - @topcategories.each do |c|
+        = link_to category_item_path(c) do
+          %h4.title
+            = c.name
+= render "shared/footer.haml"
