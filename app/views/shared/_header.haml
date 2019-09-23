@@ -11,7 +11,7 @@
     .nav.clearfix
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
-          = link_to "カテゴリー", "", {id: "catBtn"}
+          = link_to "カテゴリー", category_index_path, {id: "catBtn"}
           .tree.displayNone
             %ul.categoryTree
               - [].each do |category|
