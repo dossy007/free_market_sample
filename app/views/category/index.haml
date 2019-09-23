@@ -9,7 +9,7 @@
         %h3.title カテゴリ一覧
     .productLists{id: "slickLists--1"}
       - @topcategories.each do |c|
-        = link_to category_item_path(c) do
+        = link_to category_item_path(category) do
           %h4.title
-            = c.name
+            = category.name
 = render "shared/footer.haml"
