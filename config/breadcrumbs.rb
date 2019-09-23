@@ -4,29 +4,24 @@ crumb :root do
 end
 
 crumb :users do
-	link "userpage", users_path
+	link "mypage", users_path
 	parent :root
 end
 
-crumb :items do
-	link "商品詳細",item_path
+crumb :show do
+	link "商品詳細", item_path
 	parent :root
 end
 
-# crumb :project do |project|
-#   link project.name, project_path(project)
-#   parent :projects
-# end
+crumb :all_category do
+  link "カテゴリ一覧",category_index_path
+  parent :root
+end
 
-# crumb :project_issues do |project|
-#   link "Issues", project_issues_path(project)
-#   parent :project, project
-# end
-
-# crumb :issue do |issue|
-#   link issue.title, issue_path(issue)
-#   parent :project_issues, issue.project
-# end
+crumb :category do |category|
+	link "#{category}",category_item_path
+	parent :all_category
+end
 
 # If you want to split your breadcrumbs configuration over multiple files, you
 # can create a folder named `config/breadcrumbs` and put your configuration

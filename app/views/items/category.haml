@@ -1,10 +1,12 @@
 = render "shared/header"
+- breadcrumb :category,@category.name
+= breadcrumbs class: "breadcrumbs-list"
 %section.pickupContainer
-  %h2.head ピックアップカテゴリー
+  %h2.head
   .productBox
     .productHead
       = link_to "#" do
         %h3.title "#{@category.name}"
     .productLists{id: "slickLists--1"}
-      = render partial: "item", collection: @items
+= render partial: "item", collection: @items
 = render "shared/footer"
