@@ -61,6 +61,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rails-controller-testing'
+  gem 'capybara', '>= 2.15'
 end
 
 group :development do
