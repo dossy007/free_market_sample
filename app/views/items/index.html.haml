@@ -124,7 +124,8 @@
     .productBox
       .productHead
         = link_to "#" do
-          %h3.title "#{@category.name}"
+          %h3.title
+            = @category.name
       .productLists{id: "slickLists--1"}
         = render partial: "item", collection: @items
 
