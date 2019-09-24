@@ -7,7 +7,9 @@ class ItemsController < ApplicationController
   before_action :item_keyword,only: [:search_item,:seek_item]
 
   def index
-    @items = Item.limit(8)
+    @category = Category.find(2) #// MEMO: pickupcategoryをメンズに固定
+    @category_ids = @category.leaves.ids
+    @items = Item.where(category_id: @category_ids)
   end
 
   def new
