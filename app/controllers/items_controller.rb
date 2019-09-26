@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,except: [:index,:show]
+  before_action :authenticate_user!,except: [:index,:show,:search_item,:seek_item,:search,:category]
   before_action :get_category, only: [:edit,:show]
   before_action :prepared_update, only: [:update]
   before_action :set_category,only: [:category]
