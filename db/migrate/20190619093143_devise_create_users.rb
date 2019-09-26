@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :city_name
       t.string :house_number
       t.string :building_name
-      t.integer :phone_number
+      t.integer :phone_number,limit: 8
       t.integer :birth_year
       t.integer :birth_month
       t.integer :birth_day

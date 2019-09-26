@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_093704) do
     t.string "city_name"
     t.string "house_number"
     t.string "building_name"
-    t.integer "phone_number"
+    t.bigint "phone_number"
     t.integer "birth_year"
     t.integer "birth_month"
     t.integer "birth_day"
