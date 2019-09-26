@@ -14,4 +14,6 @@ class Item < ApplicationRecord
   #validation
   validates :name,:text,:category_id,:shopping_status,:send_burden,:prefecture_id,:delivery_date,:price, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 1}
+  validates :name,length: {maxmum: 40}
+  validates :text,length: {maxmum: 1000}
 end
