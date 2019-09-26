@@ -13,12 +13,13 @@ $(document).on('turbolinks:load', function(){
   var preview = $('#list');
   var preview2 = $('#list2');
   var form = $(".img_view").length
+  var form = 0
+  var i_num = 0
 
-
-if (form < 3) {
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
+    if (form < 3) {
+    form +=1
     var file = $(this).prop('files')[0];
-
     //input_fileの中身をキャンセルした場合
     if (file !== undefined) {
       var reader = new FileReader();
@@ -60,6 +61,14 @@ if (form < 3) {
       dropzone.css({
         'width': `calc(100% - (157.5px * ${images.length}))`
       })
+    }
+    i_num += 1
+
+    var html = $(`<li class="form-area" data-item-id="${i_num}" style="display: block; float: right; width: calc(100% - (157.5px * ${images.length}) ">
+      <label class="dropzone-box" data-item-id="${i_num}" for="item_images_attributes_${i_num}_image">Image</label>
+      <input class="upload-image" type="file" name="item[images_attributes][${i_num}][image]" id="item_images_attributes_${i_num}_image">
+      </li>`)
+    $(".formUploader").append(html)
     }
   });
 
