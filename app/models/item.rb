@@ -12,5 +12,6 @@ class Item < ApplicationRecord
   		 send_burden: [:postage_included,:cash_on_delivery],
   		 delivery_date:[:ship_in_1_2days,:ship_in_2_3days,:ship_in_4_7days]
   #validation
+  validates :name,:text,:category_id,:shopping_status,:send_burden,:prefecture_id,:delivery_date,:price, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 1}
 end
