@@ -11,4 +11,6 @@ class Item < ApplicationRecord
   enum shopping_status: [:unused,:near_used,:no_dirt,:some_dirt,:dirt,:bad_condition],
   		 send_burden: [:postage_included,:cash_on_delivery],
   		 delivery_date:[:ship_in_1_2days,:ship_in_2_3days,:ship_in_4_7days]
+  #validation
+  validates :price, numericality: { greater_than_or_equal_to: 1}
 end
