@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 	has_many :users, through: :buy
 	has_one :sell
 	has_one :buy
-  accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :images, allow_destroy: true,reject_if: proc { |attributes| attributes['image'].blank? }
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
 
@@ -14,6 +14,6 @@ class Item < ApplicationRecord
   #validation
   validates :name,:text,:category_id,:shopping_status,:send_burden,:prefecture_id,:delivery_date,:price, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 1}
-  validates :name,length: {maxmum: 40}
-  validates :text,length: {maxmum: 1000}
+  validates :name,length: {maximum: 40}
+  validates :text,length: {maximum: 1000}
 end
