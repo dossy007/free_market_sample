@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :redirect_flash, only: [:pay]
+  before_action :authenticate_user!
   require "payjp"
 
   def new
