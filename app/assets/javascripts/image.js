@@ -52,13 +52,6 @@ $(document).on('turbolinks:load', function(){
           'display': 'none'
         })
       }
-
-      $.each(images, function(index, image) {
-        image.attr('data-image', index);
-        preview.append(image);
-      })
-      dropzone.css({
-        'width': `calc(100% - (157.5px * ${images.length}))`
       })
     }
     i_num += 1
