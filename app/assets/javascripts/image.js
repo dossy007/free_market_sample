@@ -12,8 +12,7 @@ $(document).on('turbolinks:load', function(){
   var input_area = $('.form_area');
   var preview = $('#list');
   var preview2 = $('#list2');
-  var form = $(".img_view").length
-  var form = 0
+  var form = 0 //MEMO: img_viewのhtmlを数える数
   var i_num = 0
 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
@@ -32,7 +31,7 @@ $(document).on('turbolinks:load', function(){
           'display': 'block'
       })
       inputs.push($(this));
-      var img = $(`<div class= "img_view"><img class="picture"></div>`);
+      var img = $(`<div class= "img_view" data-image-id="${i_num}"><img class="picture"></div>`);
       reader.onload = function(e) {
         var btn_wrapper = $('<p class="btn_left">編集</p><p class="btn_right">削除</p>');
         img.append(btn_wrapper);
