@@ -165,6 +165,9 @@ if (form < 3) {
 
   // deletebtn
     $(document).on('click','.btn_right',function() {
+      if (item_length === 1) {
+        alert('画像は０枚にはできません!!')
+      }else{
       var parent_content = $(this).parent()
       var data_id = $(parent_content).data('item-id')
       var edit_action = $(".edit_item").attr('action')
@@ -179,6 +182,7 @@ if (form < 3) {
         dataType: 'json',
         contentType: false
       })
+      }
     })
 
     }//editはここまで
