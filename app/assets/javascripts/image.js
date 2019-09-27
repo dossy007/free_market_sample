@@ -52,11 +52,11 @@ $(document).on('turbolinks:load', function(){
           'display': 'none'
         })
       }
-      })
+      preview.append(img)
     }
     i_num += 1
 
-    var html = $(`<li class="form-area" data-item-id="${i_num}" style="display: block; float: right; width: calc(100% - (157.5px * ${images.length}) ">
+    var html = $(`<li class="form-area" data-item-id="${i_num}" style="display: block; float: right; width: calc(100% - (157.5px * ${form}) ">
       <label class="dropzone-box" data-item-id="${i_num}" for="item_images_attributes_${i_num}_image">Image</label>
       <input class="upload-image" type="file" name="item[images_attributes][${i_num}][image]" id="item_images_attributes_${i_num}_image">
       </li>`)
@@ -65,31 +65,29 @@ $(document).on('turbolinks:load', function(){
   });
 
 
-  $(".btn_right").on('click','.for', function() {
+    $(document).on('click','.btn_right',function() {
     var target_image = $(this).parent();
-    $.each(inputs, function(index, input){
-      if ($(this).data('image') == target_image.data('image')){
-        $(this).remove();
-        target_image.remove();
-        var num = $(this).data('image');
-        images.splice(num, 1);
-        inputs.splice(num, 1);
-        if(inputs.length == 0) {
-          $('input[type= "file"].upload-image').attr({
-            'data-image': 0
-          })
-        }
-      }
+    var num = target_image.data("image-id")
+    var get_form = $(`.form-area[data-item-id='${num}']`)
+
+    form -=1
+    target_image.remove()
+    get_form.remove()
+    preview.css({
+      'width': '-=157.5px'
+    });
+    dropzone.css({
+      'float' :'right'
+    });
+
+    //MEMO: li .form-areaのlastのcssを調整
+    var last_form = $(".form-area:last")
+    last_form.css({
+      'width': `calc(100% - (157.5px * ${form}))`
     })
+
     $('input[type= "file"].upload-image:first').attr({
       'data-image': inputs.length
-    })
-    $.each(inputs, function(index, input) {
-      var input = $(this)
-      input.attr({
-        'data-image': index
-      })
-      $('input[type= "file"].upload-image:first').after(input)
     })
     if(images.length == 4) {
       dropzone_box.css({
@@ -100,7 +98,7 @@ $(document).on('turbolinks:load', function(){
       dropzone.find('i').replaceWith('<p>ココをクリックしてください</p>')
     }
   })
-}
+
   }
   //newはここまで
 
