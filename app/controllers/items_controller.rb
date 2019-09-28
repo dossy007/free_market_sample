@@ -156,17 +156,18 @@ private
     base = params[:q][:category_id_matches_any]
     m = params[:q][:mcategory_id]
     g = params[:q][:scategory_id]
-    if base.length != 0
-      if g == nil || g == "" #//MEMO: grandchildを探す
-        if m == nil || m == ""
-          #//MEMO: mがない時
-          base = find_child_grand(base)
-        else
+
+    if base.present?
+      if g.present? #//MEMO: grandchildを探す
+        base = g
+      else
+        if m.present?
           #//MEMO: mがある時
           base = Category.find(m).children.ids
+        else
+          #//MEMO: mがない時
+          base = find_child_grand(base)
         end
-      else
-        base = g
       end
     end
     params[:q][:category_id_matches_any] = base
