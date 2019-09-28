@@ -85,6 +85,7 @@
             %li.optionalBtn
               = link_to "#" do
                 = fa_icon "lock", text: "あんしん・あんぜんへの取り組み"
+      - if user_signed_in?
         -  if current_user.id == @item.sell.user_id
           %ol.link
             %div.content_link

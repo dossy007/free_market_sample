@@ -88,7 +88,8 @@
                     = f.label :価格（円）
                     %span.formRequired 必須
                   %li
-                    = f.text_field :price, required: true, placeholder: "例）1,000", class: "inputField"
+                    = f.number_field :price, required: true, placeholder: "例）1,000", class: "inputField",onkeypress: "return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+
               .profitholder
                 %ul
                   %li 販売手数料（10%）

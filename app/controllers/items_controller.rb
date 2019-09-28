@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,except: [:index]
+  before_action :authenticate_user!,except: [:index,:show,:search_item,:seek_item,:search,:category]
   before_action :get_category, only: [:edit,:show]
   before_action :prepared_update, only: [:update]
   before_action :set_category,only: [:category]
@@ -156,17 +156,18 @@ private
     base = params[:q][:category_id_matches_any]
     m = params[:q][:mcategory_id]
     g = params[:q][:scategory_id]
-    if base.length != 0
-      if g == nil || g == "" #grandchildを探す
-        if m.length != 0
-          #mがある時
+
+    if base.present?
+      if g.present? #//MEMO: grandchildを探す
+        base = g
+      else
+        if m.present?
+          #//MEMO: mがある時
           base = Category.find(m).children.ids
         else
-          #mがない時
+          #//MEMO: mがない時
           base = find_child_grand(base)
         end
-      else
-        base = g
       end
     end
     params[:q][:category_id_matches_any] = base
