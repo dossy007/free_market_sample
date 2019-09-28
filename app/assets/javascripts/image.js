@@ -108,8 +108,8 @@ $(document).on('turbolinks:load', function(){
     var item_length = parseInt(length)
     var inputs = [];
     var images = [];
-    if (item_length < 3) {
     $(document).on('change', 'input[type= "file"].upload-image',function(event) {
+    if (item_length < 3) {
       var file = $(this).prop('files')[0];
       //input_fileの中身をキャンセルした場合
       if (file !== undefined) {
@@ -158,9 +158,9 @@ $(document).on('turbolinks:load', function(){
         }
 
       }
+    }
     });
 
-  }
 
   // deletebtn
     $(document).on('click','.btn_right',function() {
