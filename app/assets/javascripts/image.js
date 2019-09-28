@@ -12,13 +12,13 @@ $(document).on('turbolinks:load', function(){
   var input_area = $('.form_area');
   var preview = $('#list');
   var preview2 = $('#list2');
-  var form = $(".img_view").length
+  var form = 0 //MEMO: img_viewのhtmlを数える数
+  var i_num = 0
 
-
-if (form < 3) {
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
+    if (form < 3) {
+    form +=1
     var file = $(this).prop('files')[0];
-
     //input_fileの中身をキャンセルした場合
     if (file !== undefined) {
       var reader = new FileReader();
@@ -31,7 +31,7 @@ if (form < 3) {
           'display': 'block'
       })
       inputs.push($(this));
-      var img = $(`<div class= "img_view"><img class="picture"></div>`);
+      var img = $(`<div class= "img_view" data-image-id="${i_num}"><img class="picture"></div>`);
       reader.onload = function(e) {
         var btn_wrapper = $('<p class="btn_left">編集</p><p class="btn_right">削除</p>');
         img.append(btn_wrapper);
@@ -52,43 +52,42 @@ if (form < 3) {
           'display': 'none'
         })
       }
+      preview.append(img)
+    }
+    i_num += 1
 
-      $.each(images, function(index, image) {
-        image.attr('data-image', index);
-        preview.append(image);
-      })
-      dropzone.css({
-        'width': `calc(100% - (157.5px * ${images.length}))`
-      })
+    var html = $(`<li class="form-area" data-item-id="${i_num}" style="display: block; float: right; width: calc(100% - (157.5px * ${form}) ">
+      <label class="dropzone-box" data-item-id="${i_num}" for="item_images_attributes_${i_num}_image">Image</label>
+      <input class="upload-image" type="file" name="item[images_attributes][${i_num}][image]" id="item_images_attributes_${i_num}_image">
+      </li>`)
+    $(".formUploader").append(html)
     }
   });
 
 
-  $(".btn_right").on('click','.for', function() {
+    $(document).on('click','.btn_right',function() {
     var target_image = $(this).parent();
-    $.each(inputs, function(index, input){
-      if ($(this).data('image') == target_image.data('image')){
-        $(this).remove();
-        target_image.remove();
-        var num = $(this).data('image');
-        images.splice(num, 1);
-        inputs.splice(num, 1);
-        if(inputs.length == 0) {
-          $('input[type= "file"].upload-image').attr({
-            'data-image': 0
-          })
-        }
-      }
+    var num = target_image.data("image-id")
+    var get_form = $(`.form-area[data-item-id='${num}']`)
+
+    form -=1
+    target_image.remove()
+    get_form.remove()
+    preview.css({
+      'width': '-=157.5px'
+    });
+    dropzone.css({
+      'float' :'right'
+    });
+
+    //MEMO: li .form-areaのlastのcssを調整
+    var last_form = $(".form-area:last")
+    last_form.css({
+      'width': `calc(100% - (157.5px * ${form}))`
     })
+
     $('input[type= "file"].upload-image:first').attr({
       'data-image': inputs.length
-    })
-    $.each(inputs, function(index, input) {
-      var input = $(this)
-      input.attr({
-        'data-image': index
-      })
-      $('input[type= "file"].upload-image:first').after(input)
     })
     if(images.length == 4) {
       dropzone_box.css({
@@ -99,7 +98,7 @@ if (form < 3) {
       dropzone.find('i').replaceWith('<p>ココをクリックしてください</p>')
     }
   })
-}
+
   }
   //newはここまで
 
