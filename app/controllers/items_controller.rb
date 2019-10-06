@@ -104,7 +104,6 @@ private
     params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id, images_attributes: [:image])
   end
 
-
   def update_params
     params.require(:item).permit(:text, :name,:brand, :price,:delivery_date,:shopping_status,:send_burden,:category_id,:prefecture_id)
   end
@@ -198,3 +197,7 @@ private
     @keyword = params[:keyword]
   end
 end
+
+
+
+test
