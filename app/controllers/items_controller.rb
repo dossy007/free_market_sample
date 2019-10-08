@@ -197,7 +197,3 @@ private
     @keyword = params[:keyword]
   end
 end
-
-
-
-test
