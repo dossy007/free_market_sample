@@ -5,13 +5,19 @@ application up and running.
 
 Things you may want to cover:
 
+* Description
+
+  mercariの模範サイトを作成
+  front側はすでにほぼ作成済みの物を使用。
+  category検索や、image保存などの部分のfrontは作成。
+  JavascriptはJqueryを使用。
+  Rubyのfwはrailsを使用。
+  deployはAWS(instance,s3)。
+  
+
 * Ruby version
   2.5.1
 * System dependencies
-  mercariの模範サイトを作成
-  front側はすでにほぼ作成済みの物を使用。
-  jsやrailsを使用。
-  
   
   
 * Configuration
